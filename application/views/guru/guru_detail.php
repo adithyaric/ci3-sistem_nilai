@@ -9,7 +9,7 @@
             <img class="mb-2" src="<?= base_url('assets/uploads/') . $dt->photo; ?>" alt="" style="width:20%;">
             <tr>
                 <th>NIP</th>
-                <td><?= $dt->nip; ?></td>
+                <td><?= $dt->username; ?></td>
             </tr>
             <tr>
                 <th>NAMA guru</th>
@@ -31,7 +31,10 @@
                 <th>NO TELEPON</th>
                 <td><?= $dt->telp; ?></td>
             </tr>
-
+            <tr>
+                <th>MATA PELAJARAN</th>
+                <td><?= $dt->nama_mapel; ?></td>
+            </tr>
         <?php endforeach; ?>
     </table>
 

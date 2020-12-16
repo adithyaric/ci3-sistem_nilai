@@ -10,16 +10,6 @@
                     <input type="text" name="nama_kelas" class="form-control">
                     <?= form_error('nama_kelas', '<div class="text-danger small">', '</div>'); ?>
                 </div>
-                <div class="form-group">
-                    <label for="">Guru</label>
-                    <select name="nama_guru" id="" class="form-control">
-                        <option value="">--Pilih Guru--</option>
-                        <?php foreach ($guru as $gr) : ?>
-                            <option value="<?= $gr->nama_guru; ?>"><?= $gr->nama_guru; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    <?= form_error('nama_guru', '<div class="text-danger small">', '</div>'); ?>
-                </div>
 
                 <button type="submit" class="btn btn-primary mb-4">Simpan</button>
             </div>

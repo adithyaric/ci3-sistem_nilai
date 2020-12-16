@@ -27,33 +27,49 @@ class Guru extends CI_Controller
 
   public function tambah_guru()
   {
+    $data['mapel'] = $this->guru_model->tampil_data('mapel')->result();
     $this->load->view('templates/header');
     $this->load->view('templates/sidebar');
-    $this->load->view('guru/guru_form');
+    $this->load->view('guru/guru_form', $data);
     $this->load->view('templates/footer');
   }
 
   public function tambah_guru_aksi()
   {
+    $cek = $this->db->get_where('guru', array('username' => $this->input->post('username', true)));
+    if ($cek->num_rows() != 0) {
+      $this->session->set_flashdata(
+        'msg',
+        '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a><strong>Maaf!</strong> NIP Guru Sudah Ada !</div>'
+      );
+      redirect(base_url() . 'administrator/guru/tambah_guru');
+      exit();
+    }
     $this->_rules();
     if ($this->form_validation->run() == FALSE) {
       $this->tambah_guru();
     } else {
-      $nip           = $this->input->post('nip');
+      $username      = $this->input->post('username');
       $nama_guru     = $this->input->post('nama_guru');
       $alamat        = $this->input->post('alamat');
       $jenis_kelamin = $this->input->post('jenis_kelamin');
       $email         = $this->input->post('email');
       $telp          = $this->input->post('telp');
-      $photo         = $_FILES['photo'];
-      if ($photo = '') {
+      $id_mapel      = $this->input->post('id_mapel');
+      $password      = $this->input->post('password');
+      $level         = $this->input->post('level');
+      $photo         = $_FILES['photo']['name'];
+      // $_FILES[''photo]['name']
+
+      if ($photo == '') {
       } else {
         $config['upload_path']   = './assets/uploads';
         $config['allowed_types'] = 'jpg|jpeg|png|gif|tiff';
 
         $this->load->library('upload', $config);
         if (!$this->upload->do_upload('photo')) {
-          echo "Gagal Upload!";
+          echo "Gagal Upload!...";
+          $this->tambah_guru();
           die();
         } else {
           $photo = $this->upload->data('file_name');
@@ -61,13 +77,16 @@ class Guru extends CI_Controller
       }
 
       $data = array(
-        'nip'          => $nip,
-        'nama_guru'    => $nama_guru,
+        'username'      => $username,
+        'password'      => $password,
+        'nama_guru'     => $nama_guru,
         'alamat'        => $alamat,
         'jenis_kelamin' => $jenis_kelamin,
         'email'         => $email,
         'telp'          => $telp,
         'photo'         => $photo,
+        'id_mapel'      => $id_mapel,
+        'level'         => $level
       );
 
       $this->guru_model->insert_data($data, 'guru');
@@ -86,8 +105,9 @@ class Guru extends CI_Controller
 
   public function update($id)
   {
-    $where = array('nip' => $id);
+    $where = array('username' => $id);
     $data['guru']     = $this->guru_model->edit_data($where, 'guru')->result();
+    $data['mapel']     = $this->guru_model->tampil_data('mapel')->result();
     $data['detail']    = $this->guru_model->ambil_id_guru($id);
     $this->load->view('templates/header');
     $this->load->view('templates/sidebar');
@@ -97,63 +117,62 @@ class Guru extends CI_Controller
 
   public function update_guru_aksi()
   {
+
     $this->_rules();
 
-    if ($this->form_validation->run() == FALSE) {
-      $id = $this->input->post('id_guru');
-      $this->update($id);
-    } else {
-      $id            = $this->input->post('id_guru');
-      $nip          = $this->input->post('nip');
-      $nama_guru    = $this->input->post('nama_guru');
-      $alamat        = $this->input->post('alamat');
-      $jenis_kelamin = $this->input->post('jenis_kelamin');
-      $email         = $this->input->post('email');
-      $telp          = $this->input->post('telp');
-      $photo         = $_FILES['userfile']['name'];
-      if ($photo) {
-        $config['upload_path']   = './assets/uploads';
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|tiff';
+    $id            = $this->input->post('id_guru');
+    $username      = $this->input->post('username');
+    $nama_guru     = $this->input->post('nama_guru');
+    $alamat        = $this->input->post('alamat');
+    $jenis_kelamin = $this->input->post('jenis_kelamin');
+    $email         = $this->input->post('email');
+    $telp          = $this->input->post('telp');
+    $id_mapel      = $this->input->post('id_mapel');
+    $photo         = $_FILES['userfile']['name'];
 
-        $this->load->library('upload', $config);
-        if ($this->upload->do_upload('userfile')) {
-          $userfile = $this->upload->data('file_name');
-          $this->db->set('photo', $userfile);
-        } else {
-          echo "Photo Gagal di-Upload!";
-        }
+    if ($photo) {
+      $config['upload_path']   = './assets/uploads';
+      $config['allowed_types'] = 'jpg|jpeg|png|gif|tiff';
+
+      $this->load->library('upload', $config);
+      if ($this->upload->do_upload('userfile')) {
+        $userfile = $this->upload->data('file_name');
+        $this->db->set('photo', $userfile);
+      } else {
+        echo "Photo Gagal di-Upload!";
       }
+    }
 
-      $data = array(
-        'nip'          => $nip,
-        'nama_guru'    => $nama_guru,
-        'alamat'        => $alamat,
-        'jenis_kelamin' => $jenis_kelamin,
-        'email'         => $email,
-        'telp'          => $telp
-      );
+    $data = array(
+      'username'      => $username,
+      'nama_guru'     => $nama_guru,
+      'alamat'        => $alamat,
+      'jenis_kelamin' => $jenis_kelamin,
+      'email'         => $email,
+      'telp'          => $telp,
+      'id_mapel'      => $id_mapel
+    );
 
-      $where = array(
-        'id_guru' => $id,
-      );
+    $where = array(
+      'id_guru' => $id,
+    );
 
-      $this->guru_model->update_data($where, $data, 'guru');
-      $this->session->set_flashdata(
-        'pesan',
-        '<div class="alert alert-success alert-dismissible fade show" role="alert">
+    $this->guru_model->update_data($where, $data, 'guru');
+    $this->session->set_flashdata(
+      'pesan',
+      '<div class="alert alert-success alert-dismissible fade show" role="alert">
             Data guru berhasil diupdate
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>'
-      );
-      redirect('administrator/guru');
-    }
+    );
+    redirect('administrator/guru');
   }
 
   public function delete($id)
   {
-    $where = array('nip' => $id);
+    $where = array('username' => $id);
     $this->guru_model->hapus_data($where, 'guru');
     $this->session->set_flashdata(
       'pesan',
@@ -169,7 +188,7 @@ class Guru extends CI_Controller
 
   public function _rules()
   {
-    $this->form_validation->set_rules('nip', 'nip', 'required', [
+    $this->form_validation->set_rules('username', 'username', 'required', [
       'required' => 'Nip wajib diisi!'
     ]);
     $this->form_validation->set_rules('nama_guru', 'nama_guru', 'required', [
@@ -189,6 +208,9 @@ class Guru extends CI_Controller
     ]);
     $this->form_validation->set_rules('photo', 'photo', 'required', [
       'required' => 'Foto wajib diisi!'
+    ]);
+    $this->form_validation->set_rules('id_mapel', 'id_mapel', 'required', [
+      'required' => 'Mata Pelajaran wajib diisi!'
     ]);
   }
 }

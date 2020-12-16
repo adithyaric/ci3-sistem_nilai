@@ -7,11 +7,11 @@
 
     <div class="row">
         <div class="col-md-6">
-
+            <?= @$this->session->flashdata('msg') ?>
             <div class="form-group">
-                <label for="">NIP</label>
-                <input type="text" name="nis" class="form-control">
-                <?= form_error('nis', '<div class="text-danger small">', '</div>'); ?>
+                <label for="">NIS</label>
+                <input type="text" name="username" class="form-control">
+                <?= form_error('username', '<div class="text-danger small">', '</div>'); ?>
             </div>
             <div class="form-group">
                 <label for="">Nama siswa</label>
@@ -34,10 +34,10 @@
             </div>
             <div class="form-group">
                 <label for="">Kelas</label>
-                <select name="nama_kelas" id="" class="form-control">
+                <select name="id_kelas" id="" class="form-control">
                     <option value="">--Pilih kelas--</option>
                     <?php foreach ($kelas as $gr) : ?>
-                        <option value="<?= $gr->nama_kelas; ?>"><?= $gr->nama_kelas; ?></option>
+                        <option value="<?= $gr->id_kelas; ?>"><?= $gr->nama_kelas; ?></option>
                     <?php endforeach; ?>
                 </select>
                 <?= form_error('nama_kelas', '<div class="text-danger small">', '</div>'); ?>
@@ -47,7 +47,8 @@
                 <input type="file" name="photo">
                 <?= form_error('photo', '<div class="text-danger small">', '</div>'); ?>
             </div>
-
+            <input type="hidden" name="password" value="siswa123">
+            <input type="hidden" name="level" value="siswa">
             <button type="submit" class="btn btn-primary mb-5">Simpan</button>
 
         </div>

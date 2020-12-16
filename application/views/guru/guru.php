@@ -23,13 +23,13 @@
         foreach ($guru as $gr) : ?>
             <tr>
                 <td width="20px;"><?= $no++; ?></td>
-                <td><?= $gr->nip; ?></td>
+                <td><?= $gr->username; ?></td>
                 <td><?= $gr->nama_guru; ?></td>
                 <td><?= $gr->alamat; ?></td>
                 <td><?= $gr->email; ?></td>
-                <td width="20px"><?= anchor('administrator/guru/detail/' . $gr->nip, '<div class="btn btn-sm btn-info"><i class="fa fa-eye"></i></div>') ?></td>
-                <td width="20px"><?= anchor('administrator/guru/update/' . $gr->nip, '<div class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></div>') ?></td>
-                <td width="20px"><?= anchor('administrator/guru/delete/' . $gr->nip, '<div onclick="return confirm(\'Yakin akan menghapus?\')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></div>') ?></td>
+                <td width="20px"><?= anchor('administrator/guru/detail/' . $gr->username, '<div class="btn btn-sm btn-info"><i class="fa fa-eye"></i></div>') ?></td>
+                <td width="20px"><?= anchor('administrator/guru/update/' . $gr->username, '<div class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></div>') ?></td>
+                <td width="20px"><?= anchor('administrator/guru/delete/' . $gr->username, '<div onclick="return confirm(\'Yakin akan menghapus?\')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></div>') ?></td>
             </tr>
         <?php endforeach; ?>
     </table>

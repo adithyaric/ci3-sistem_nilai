@@ -12,8 +12,8 @@
                 <div class="form-group">
                     <label for="">nis</label>
                     <input type="hidden" name="id_siswa" value="<?= $gr->id_siswa; ?>">
-                    <input type="text" name="nis" class="form-control" value="<?= $gr->nis; ?>">
-                    <?= form_error('nis', '<div class="text-danger small">', '</div>'); ?>
+                    <input type="text" name="username" class="form-control" value="<?= $gr->username; ?>">
+                    <?= form_error('username', '<div class="text-danger small">', '</div>'); ?>
                 </div>
                 <div class="form-group">
                     <label for="">Nama siswa</label>
@@ -33,32 +33,21 @@
                     </select>
                     <?= form_error('jenis_kelamin', '<div class="text-danger small">', '</div>'); ?>
                 </div>
-                <!-- <div class="form-group">
-                    <label for="">Kelas</label>
-                    <select name="nama_kelas" id="" class="form-control">
-                        <option value=""><?= $gr->nama_kelas; ?></option>
-                        <?php foreach ($kelas as $kls) : ?>
-                            <option value="<?= $kls->nama_kelas; ?>"><?= $kls->nama_kelas; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    <?= form_error('nama_kelas', '<div class="text-danger small">', '</div>'); ?>
-                </div> -->
-                <div class="form-group">
-                    <label for="">Kelas</label>
-                    <select name="nama_kelas" id="" class="form-control">
-                        <option><?= $gr->nama_kelas; ?></option>
-                        <?php foreach ($kelas as $kls) : ?>
-                            <option value="<?= $kls->nama_kelas; ?>"><?= $kls->nama_kelas; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-
                 <div class="form-group">
                     <?php foreach ($detail as $dt) : ?>
-                        <img src="<?= base_url('assets/uploads/') . $gr->photo; ?>" style="width:20%;">
+                        <img src="<?= base_url('assets/uploads/') . $dt->photo; ?>" style="width:20%;">
                     <?php endforeach; ?><br><br>
                     <label for="">Foto</label><br>
-                    <input type="file" name="userfile" value="<?= $gr->photo; ?>">
+                    <input type="file" name="userfile" value="<?= $dt->photo; ?>">
+                </div>
+                <div class="form-group">
+                    <label for="">Kelas</label>
+                    <select name="id_kelas" id="" class="form-control">
+                        <option value="<?= $dt->id_kelas; ?>">--<?= $dt->nama_kelas ?>--</option>
+                        <?php foreach ($kelas as $kls) : ?>
+                            <option value="<?= $kls->id_kelas; ?>"><?= $kls->nama_kelas; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
 
                 <button type="submit" class="btn btn-primary mb-5">Simpan</button>

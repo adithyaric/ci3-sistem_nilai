@@ -3,9 +3,8 @@
 class Siswa_model extends CI_Model
 {
 
-    public $table = 'siswa';
-    public $id    = 'id_siswa';
-    //public $order = 'DESC';
+    // public $table = 'siswa';
+    // public $id    = 'id_siswa';
 
     public function tampil_data($table)
     {
@@ -14,7 +13,11 @@ class Siswa_model extends CI_Model
 
     public function ambil_id_siswa($id)
     {
-        $hasil = $this->db->where('nis', $id)->get('siswa');
+        $this->db->select('*, k.nama_kelas as nama_kelas');
+        $this->db->from('siswa s');
+        $this->db->join('kelas k', 'k.id_kelas = s.id_kelas');
+        $this->db->where('username', $id);
+        $hasil = $this->db->get();
         if ($hasil->num_rows() > 0) {
             return $hasil->result();
         } else {

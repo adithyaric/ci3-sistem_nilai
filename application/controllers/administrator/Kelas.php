@@ -19,10 +19,9 @@ class Kelas extends CI_Controller
 
     public function tambah_kelas()
     {
-        $data['guru'] = $this->kelas_model->tampil_data('guru')->result();
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('kelas/kelas_form', $data);
+        $this->load->view('kelas/kelas_form');
         $this->load->view('templates/footer');
     }
 
@@ -33,13 +32,8 @@ class Kelas extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->tambah_kelas();
         } else {
-            $nama_kelas     = $this->input->post('nama_kelas');
-            $nama_guru      = $this->input->post('nama_guru');
-
-            $data = array(
-                'nama_kelas'    => $nama_kelas,
-                'nama_guru'     => $nama_guru,
-            );
+            $nama_kelas = $this->input->post('nama_kelas');
+            $data = array('nama_kelas' => $nama_kelas);
 
             $this->kelas_model->insert_data($data, 'kelas');
             $this->session->set_flashdata(
@@ -58,8 +52,7 @@ class Kelas extends CI_Controller
     public function update($id)
     {
         $where = array('id_kelas' => $id);
-        $data['kelas'] = $this->db->query("SELECT * FROM kelas kl, guru gr WHERE kl.nama_guru=gr.nama_guru AND kl.id_kelas='$id'")->result();
-        $data['guru'] = $this->kelas_model->tampil_data('guru')->result();
+        $data['kelas'] = $this->db->get_where('kelas', $where)->result();
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
@@ -71,28 +64,30 @@ class Kelas extends CI_Controller
     {
         $id             = $this->input->post('id_kelas');
         $nama_kelas     = $this->input->post('nama_kelas');
-        $nama_guru      = $this->input->post('nama_guru');
 
-        $data = array(
-            'nama_kelas'    => $nama_kelas,
-            'nama_guru'     => $nama_guru,
-        );
+        $this->_rules();
 
-        $where = array(
-            'id_kelas' => $id
-        );
+        if ($this->form_validation->run() == FALSE) {
+            $this->update($id);
+        } else {
+            $data = array('nama_kelas' => $nama_kelas);
 
-        $this->kelas_model->update_data($where, $data, 'kelas');
-        $this->session->set_flashdata(
-            'pesan',
-            '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            $where = array(
+                'id_kelas' => $id
+            );
+
+            $this->kelas_model->update_data($where, $data, 'kelas');
+            $this->session->set_flashdata(
+                'pesan',
+                '<div class="alert alert-success alert-dismissible fade show" role="alert">
           Data Kelas berhasil diupdate
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>'
-        );
-        redirect('administrator/kelas');
+            );
+            redirect('administrator/kelas');
+        }
     }
 
     public function delete($id)
@@ -113,11 +108,6 @@ class Kelas extends CI_Controller
 
     public function _rules()
     {
-        $this->form_validation->set_rules('nama_kelas', 'nama_kelas', 'required', [
-            'required' => 'Nama Kelas wajib diisi!'
-        ]);
-        $this->form_validation->set_rules('nama_guru', 'nama_guru', 'required', [
-            'required' => 'Nama guru wajib diisi!'
-        ]);
+        $this->form_validation->set_rules('nama_kelas', 'nama_kelas', 'required', ['required' => 'Nama Kelas wajib diisi!']);
     }
 }

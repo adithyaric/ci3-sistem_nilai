@@ -9,7 +9,7 @@
             <img class="mb-2" src="<?= base_url('assets/uploads/') . $dt->photo; ?>" alt="" style="width:20%;">
             <tr>
                 <th>NIS</th>
-                <td><?= $dt->nis; ?></td>
+                <td><?= $dt->username; ?></td>
             </tr>
             <tr>
                 <th>NAMA siswa</th>

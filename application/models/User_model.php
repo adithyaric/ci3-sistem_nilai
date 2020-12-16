@@ -1,28 +1,32 @@
 <?php
 
-class Guru_model extends CI_Model
+class User_model extends CI_Model
 {
 
-    // public $table = 'guru';
-    // public $id    = 'id_guru';
-
-    public function tampil_data($table)
+    // public $table = 'users';
+    // public $id = 'id';
+    public function ambil_id_users($id)
     {
-        return $this->db->get($table);
-    }
-
-    public function ambil_id_guru($id)
-    {
-        $this->db->select('*, m.nama_mapel as nama_mapel');
-        $this->db->from('guru g');
-        $this->db->join('mapel m', 'm.id_mapel=g.id_mapel');
-        $this->db->where('username', $id);
+        $this->db->select('*, k.nama_kelas as nama_kelas');
+        $this->db->from('users s');
+        $this->db->join('kelas k', 'k.id_kelas = s.id_kelas');
+        $this->db->where('id', $id);
         $hasil = $this->db->get();
         if ($hasil->num_rows() > 0) {
             return $hasil->result();
         } else {
             return false;
         }
+    }
+    // public function ambil_data($id)
+    // {
+    //     $this->db->where('username', $id);
+    //     return $this->db->get('users')->row();
+    // }
+
+    public function tampil_data($table)
+    {
+        return $this->db->get($table);
     }
 
     public function insert_data($data, $table)
@@ -45,12 +49,5 @@ class Guru_model extends CI_Model
     {
         $this->db->where($where);
         $this->db->delete($table);
-    }
-
-
-    public function get_by_id($id)
-    {
-        $this->db->where($this->id, $id);
-        return $this->db->get($this->table)->row();
     }
 }

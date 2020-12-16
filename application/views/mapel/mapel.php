@@ -11,7 +11,6 @@
         <tr>
             <th>NO</th>
             <th>Nama Mata Pelajaran</th>
-            <th>Nama Guru</th>
             <th colspan="2">AKSI</th>
         </tr>
 
@@ -21,7 +20,6 @@
             <tr>
                 <td width="20px;"><?= $no++; ?></td>
                 <td><?= $mp->nama_mapel; ?></td>
-                <td><?= $mp->nama_guru; ?></td>
                 <td width="20px"><?= anchor('administrator/mapel/update/' . $mp->id_mapel, '<div class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></div>') ?></td>
                 <td width="20px"><?= anchor('administrator/mapel/delete/' . $mp->id_mapel, '<div onclick="return confirm(\'Yakin akan menghapus?\')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></div>') ?></td>
             </tr>

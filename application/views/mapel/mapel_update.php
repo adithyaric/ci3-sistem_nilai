@@ -13,15 +13,7 @@
                         <label for="">Nama Mata Pelajaran</label>
                         <input type="hidden" name="id_mapel" class="form-control" value="<?= $mp->id_mapel ?>">
                         <input type="text" name="nama_mapel" class="form-control" value="<?= $mp->nama_mapel ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Guru</label>
-                        <select name="nama_guru" id="" class="form-control">
-                            <option><?= $mp->nama_guru; ?></option>
-                            <?php foreach ($guru as $gr) : ?>
-                                <option value="<?= $gr->nama_guru; ?>"><?= $gr->nama_guru; ?></option>
-                            <?php endforeach; ?>
-                        </select>
+                        <?= form_error('nama_mapel', '<div class="text-danger small">', '</div>'); ?>
                     </div>
                     <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
 

@@ -12,8 +12,8 @@
                 <div class="form-group">
                     <label for="">NIP</label>
                     <input type="hidden" name="id_guru" value="<?= $gr->id_guru; ?>">
-                    <input type="text" name="nip" class="form-control" value="<?= $gr->nip; ?>">
-                    <?= form_error('nip', '<div class="text-danger small">', '</div>'); ?>
+                    <input type="text" name="username" class="form-control" value="<?= $gr->username; ?>">
+                    <?= form_error('username', '<div class="text-danger small">', '</div>'); ?>
                 </div>
                 <div class="form-group">
                     <label for="">Nama guru</label>
@@ -45,12 +45,22 @@
                 </div>
                 <div class="form-group">
                     <?php foreach ($detail as $dt) : ?>
-                        <img src="<?= base_url('assets/uploads/') . $gr->photo; ?>" style="width:20%;">
+                        <img src="<?= base_url('assets/uploads/') . $dt->photo; ?>" style="width:20%;">
                     <?php endforeach; ?><br><br>
                     <label for="">Foto</label><br>
-                    <input type="file" name="userfile" value="<?= $gr->photo; ?>">
+                    <input type="file" name="userfile" value="<?= $dt->photo; ?>">
+                    <?= form_error('photo', '<div class="text-danger small">', '</div>'); ?>
                 </div>
-
+                <div class="form-group">
+                    <label for="">Mata Kuliah</label>
+                    <select name="id_mapel" id="" class="form-control">
+                        <option value="<?= $dt->id_mapel; ?>">--<?= $dt->nama_mapel ?>--</option>
+                        <?php foreach ($mapel as $mp) : ?>
+                            <option value="<?= $mp->id_mapel; ?>"><?= $mp->nama_mapel; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <?= form_error('id_mapel', '<div class="text-danger small">', '</div>'); ?>
+                </div>
                 <button type="submit" class="btn btn-primary mb-5">Simpan</button>
 
             </div>

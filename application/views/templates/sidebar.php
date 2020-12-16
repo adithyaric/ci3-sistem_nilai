@@ -37,29 +37,27 @@
                         <a class="collapse-item" href="<?= base_url('administrator/mapel') ?>">Mapel</a>
                         <a class="collapse-item" href="<?= base_url('administrator/kelas') ?>">Kelas</a>
                         <a class="collapse-item" href="<?= base_url('administrator/siswa') ?>">Siswa</a>
-                        <a class="collapse-item" href="<?= base_url('administrator/nilai') ?>">Nilai</a>
+                        <!-- <a class="collapse-item" href="<?= base_url('administrator/nilai') ?>">Nilai</a> -->
                     </div>
                 </div>
             </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link" href="<?= base_url('welcome'); ?>">
+                    <i class="fas fa-edit"></i>
+                    <span>Nilai : oleh Guru</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('welcome'); ?>">
+                    <i class="fas fa-edit"></i>
+                    <span>Nilai : oleh Wali Kelas</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('administrator/users') ?>">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Pengaturan</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Sub-Menu Pengaturan :</h6>
-                        <a class="collapse-item" href="<?= base_url('administrator/users') ?>">User</a>
-                        <a class="collapse-item" href="<?= base_url() ?>assets/utilities-border.html">Menu</a>
-                    </div>
-                </div>
+                    <span>User</span></a>
             </li>
-
-            <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('administrator/auth/logout'); ?>" onclick="return confirm('Yakin akan logout?')">
+                <a class="nav-link" href="<?= base_url('welcome'); ?>" onclick="return confirm('Yakin akan logout?')">
                     <i class="fas fa-fw fa-sign-out-alt"></i>
                     <span>Logout</span></a>
             </li>
