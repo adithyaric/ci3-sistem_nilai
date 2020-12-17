@@ -62,11 +62,9 @@
                     <?= form_error('id_mapel', '<div class="text-danger small">', '</div>'); ?>
                 </div>
                 <button type="submit" class="btn btn-primary mb-5">Simpan</button>
-
+                <?= anchor('administrator/guru', '<div class="btn btn-info btn-sm mb-5">Kembali</div>') ?>
             </div>
         </div>
-
-        <?= anchor('administrator/guru', '<div class="btn btn-primary btn-sm mb-5">Kembali</div>') ?>
         <?php form_close(); ?>
     <?php endforeach; ?>
 </div>

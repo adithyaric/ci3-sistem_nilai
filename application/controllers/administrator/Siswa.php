@@ -36,38 +36,43 @@ class Siswa extends CI_Controller
 
   public function tambah_siswa_aksi()
   {
-    $cek = $this->db->get_where('siswa', array('username' => $this->input->post('username', true)));
+    $username      = $this->input->post('username', true);
+    $nama_siswa    = $this->input->post('nama_siswa');
+    $alamat        = $this->input->post('alamat');
+    $jenis_kelamin = $this->input->post('jenis_kelamin');
+    $id_kelas    = $this->input->post('id_kelas');
+    $photo         = $_FILES['photo']['name'];
+
+    $cek = $this->db->get_where('siswa', array('username' => $username));
     if ($cek->num_rows() != 0) {
       $this->session->set_flashdata(
         'msg',
-        '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a><strong>Maaf!</strong> NIS Siswa Sudah Ada !</div>'
+        '<div class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a>
+        <strong>Maaf!</strong> NIS Siswa Sudah Ada !</div>'
       );
       redirect(base_url() . 'administrator/siswa/tambah_siswa');
       exit();
     }
 
     $this->_rules();
+    if (empty($photo)) {
+      $this->form_validation->set_rules('photo', 'photo', 'required', [
+        'required' => 'Foto wajib diisi!'
+      ]);
+    }
     if ($this->form_validation->run() == FALSE) {
       $this->tambah_siswa();
     } else {
-      $username      = $this->input->post('username');
-      $nama_siswa    = $this->input->post('nama_siswa');
-      $alamat        = $this->input->post('alamat');
-      $jenis_kelamin = $this->input->post('jenis_kelamin');
-      $id_kelas    = $this->input->post('id_kelas');
-      $photo         = $_FILES['photo'];
-      if ($photo = '') {
-      } else {
-        $config['upload_path']   = './assets/uploads';
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|tiff';
+      $config['upload_path']   = './assets/uploads';
+      $config['allowed_types'] = 'jpg|jpeg|png|gif|tiff';
 
-        $this->load->library('upload', $config);
-        if (!$this->upload->do_upload('photo')) {
-          echo "Gagal Upload!";
-          die();
-        } else {
-          $photo = $this->upload->data('file_name');
-        }
+      $this->load->library('upload', $config);
+      if (!$this->upload->do_upload('photo')) {
+        echo "Gagal Upload!";
+        die();
+      } else {
+        $photo = $this->upload->data('file_name');
       }
 
       $data = array(
@@ -114,7 +119,7 @@ class Siswa extends CI_Controller
     $nama_siswa    = $this->input->post('nama_siswa');
     $alamat        = $this->input->post('alamat');
     $jenis_kelamin = $this->input->post('jenis_kelamin');
-    $id_kelas     = $this->input->post('id_kelas');
+    $id_kelas      = $this->input->post('id_kelas');
     $photo         = $_FILES['userfile']['name'];
 
     if ($photo) {
@@ -188,8 +193,5 @@ class Siswa extends CI_Controller
     $this->form_validation->set_rules('id_kelas', 'id_kelas', 'required', [
       'required' => 'Nama Kelas wajib diisi!'
     ]);
-    // $this->form_validation->set_rules('photo', 'photo', 'required', [
-    //   'required' => 'Foto wajib diisi!'
-    // ]);
   }
 }

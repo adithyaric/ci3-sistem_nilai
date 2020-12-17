@@ -15,8 +15,8 @@
                         <input type="text" name="nama_mapel" class="form-control" value="<?= $mp->nama_mapel ?>">
                         <?= form_error('nama_mapel', '<div class="text-danger small">', '</div>'); ?>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
-
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <?= anchor('administrator/mapel', '<div class="btn btn-info">Kembali</div>') ?>
                 </div>
             </div>
 

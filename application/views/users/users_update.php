@@ -80,8 +80,8 @@
               <?php endforeach; ?>
             </select>
           </div>
-
           <button type="submit" class="btn btn-primary">Simpan</button>
+          <?= anchor('administrator/users', '<div class="btn btn-info">Kembali</div>') ?>
         </div>
       </div>
     </form>

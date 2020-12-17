@@ -3,9 +3,6 @@
 class Siswa_model extends CI_Model
 {
 
-    // public $table = 'siswa';
-    // public $id    = 'id_siswa';
-
     public function tampil_data($table)
     {
         return $this->db->get($table);
@@ -46,7 +43,6 @@ class Siswa_model extends CI_Model
         $this->db->where($where);
         $this->db->delete($table);
     }
-
 
     public function get_by_id($id)
     {

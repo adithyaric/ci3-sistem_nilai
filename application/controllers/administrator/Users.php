@@ -27,6 +27,18 @@ class Users extends CI_Controller
 
     public function tambah_users_aksi()
     {
+        $cek = $this->db->get_where('users', array('username' => $this->input->post('username', true)));
+        if ($cek->num_rows() != 0) {
+            $this->session->set_flashdata(
+                'msg',
+                '<div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a>
+            <strong>Maaf!</strong> Nama User Sudah Ada !</div>'
+            );
+            redirect(base_url() . 'administrator/users/tambah_users');
+            exit();
+        }
+
         $this->_rules();
 
         if ($this->form_validation->run() == FALSE) {
@@ -34,7 +46,7 @@ class Users extends CI_Controller
         } else {
             $data = array(
                 'username'   => $this->input->post('username'),
-                'password'   => md5($this->input->post('password')),
+                'password'   => $this->input->post('password'),
                 'email'      => $this->input->post('email'),
                 'level'      => $this->input->post('level'),
                 'blokir'     => $this->input->post('blokir'),
@@ -69,6 +81,7 @@ class Users extends CI_Controller
 
     public function update_aksi()
     {
+        $this->_rules();
         $id         = $this->input->post('id');
         $username   = $this->input->post('username');
         $password   = $this->input->post('password');
@@ -133,6 +146,9 @@ class Users extends CI_Controller
         ]);
         $this->form_validation->set_rules('blokir', 'blokir', 'required', [
             'required' => 'Blokir wajib diisi!'
+        ]);
+        $this->form_validation->set_rules('id_kelas', 'id_kelas', 'required', [
+            'required' => 'Nama Kelas wajib diisi!'
         ]);
     }
 }

@@ -27,12 +27,22 @@ class Kelas extends CI_Controller
 
     public function tambah_kelas_aksi()
     {
+        $nama_kelas = $this->input->post('nama_kelas');
+        $cek = $this->db->get_where('kelas', array('nama_kelas' => $nama_kelas));
+        if ($cek->num_rows() != 0) {
+            $this->session->set_flashdata(
+                'msg',
+                '<div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a>
+            <strong>Maaf!</strong> Kelas Sudah Ada !</div>'
+            );
+            redirect(base_url() . 'administrator/kelas/tambah_kelas');
+            exit();
+        }
         $this->_rules();
-
         if ($this->form_validation->run() == FALSE) {
             $this->tambah_kelas();
         } else {
-            $nama_kelas = $this->input->post('nama_kelas');
             $data = array('nama_kelas' => $nama_kelas);
 
             $this->kelas_model->insert_data($data, 'kelas');

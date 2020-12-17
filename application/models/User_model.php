@@ -2,9 +2,6 @@
 
 class User_model extends CI_Model
 {
-
-    // public $table = 'users';
-    // public $id = 'id';
     public function ambil_id_users($id)
     {
         $this->db->select('*, k.nama_kelas as nama_kelas');
@@ -18,11 +15,6 @@ class User_model extends CI_Model
             return false;
         }
     }
-    // public function ambil_data($id)
-    // {
-    //     $this->db->where('username', $id);
-    //     return $this->db->get('users')->row();
-    // }
 
     public function tampil_data($table)
     {

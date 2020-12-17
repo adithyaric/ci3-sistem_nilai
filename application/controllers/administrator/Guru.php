@@ -36,44 +36,46 @@ class Guru extends CI_Controller
 
   public function tambah_guru_aksi()
   {
-    $cek = $this->db->get_where('guru', array('username' => $this->input->post('username', true)));
+    $username      = $this->input->post('username', true);
+    $nama_guru     = $this->input->post('nama_guru');
+    $alamat        = $this->input->post('alamat');
+    $jenis_kelamin = $this->input->post('jenis_kelamin');
+    $email         = $this->input->post('email');
+    $telp          = $this->input->post('telp');
+    $id_mapel      = $this->input->post('id_mapel');
+    $password      = $this->input->post('password');
+    $level         = $this->input->post('level');
+    $photo         = $_FILES['photo']['name'];
+
+    $cek = $this->db->get_where('guru', array('username' => $username));
     if ($cek->num_rows() != 0) {
       $this->session->set_flashdata(
         'msg',
-        '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a><strong>Maaf!</strong> NIP Guru Sudah Ada !</div>'
+        '<div class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a>
+        <strong>Maaf!</strong> NIP Guru Sudah Ada !</div>'
       );
       redirect(base_url() . 'administrator/guru/tambah_guru');
       exit();
     }
     $this->_rules();
+    if (empty($photo)) {
+      $this->form_validation->set_rules('photo', 'photo', 'required', [
+        'required' => 'Foto wajib diisi!'
+      ]);
+    }
     if ($this->form_validation->run() == FALSE) {
       $this->tambah_guru();
     } else {
-      $username      = $this->input->post('username');
-      $nama_guru     = $this->input->post('nama_guru');
-      $alamat        = $this->input->post('alamat');
-      $jenis_kelamin = $this->input->post('jenis_kelamin');
-      $email         = $this->input->post('email');
-      $telp          = $this->input->post('telp');
-      $id_mapel      = $this->input->post('id_mapel');
-      $password      = $this->input->post('password');
-      $level         = $this->input->post('level');
-      $photo         = $_FILES['photo']['name'];
-      // $_FILES[''photo]['name']
+      $config['upload_path']   = './assets/uploads';
+      $config['allowed_types'] = 'jpg|jpeg|png|gif|tiff';
 
-      if ($photo == '') {
+      $this->load->library('upload', $config);
+      if (!$this->upload->do_upload('photo')) {
+        echo "Gagal Upload!...";
+        die();
       } else {
-        $config['upload_path']   = './assets/uploads';
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|tiff';
-
-        $this->load->library('upload', $config);
-        if (!$this->upload->do_upload('photo')) {
-          echo "Gagal Upload!...";
-          $this->tambah_guru();
-          die();
-        } else {
-          $photo = $this->upload->data('file_name');
-        }
+        $photo = $this->upload->data('file_name');
       }
 
       $data = array(
@@ -205,9 +207,6 @@ class Guru extends CI_Controller
     ]);
     $this->form_validation->set_rules('telp', 'telp', 'required', [
       'required' => 'Nomor telepon wajib diisi!'
-    ]);
-    $this->form_validation->set_rules('photo', 'photo', 'required', [
-      'required' => 'Foto wajib diisi!'
     ]);
     $this->form_validation->set_rules('id_mapel', 'id_mapel', 'required', [
       'required' => 'Mata Pelajaran wajib diisi!'

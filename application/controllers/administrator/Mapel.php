@@ -27,12 +27,22 @@ class Mapel extends CI_Controller
 
     public function tambah_mapel_aksi()
     {
+        $nama_mapel = $this->input->post('nama_mapel');
+        $cek = $this->db->get_where('mapel', array('nama_mapel' => $nama_mapel));
+        if ($cek->num_rows() != 0) {
+            $this->session->set_flashdata(
+                'msg',
+                '<div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a>
+            <strong>Maaf!</strong> Mata Pelajaran Sudah Ada !</div>'
+            );
+            redirect(base_url() . 'administrator/mapel/tambah_mapel');
+            exit();
+        }
         $this->_rules();
-
         if ($this->form_validation->run() == FALSE) {
             $this->tambah_mapel();
         } else {
-            $nama_mapel = $this->input->post('nama_mapel');
             $data = array('nama_mapel' => $nama_mapel);
 
             $this->mapel_model->insert_data($data, 'mapel');

@@ -1,17 +1,26 @@
 <?php
 
-class Guru_model extends CI_Model
+class Nilai_wk_model extends CI_Model
 {
-    public function tampil_data($table)
+
+    public function tampil_data()
     {
-        return $this->db->get($table);
+        $this->db->select('*');
+        $this->db->from('nilai n');
+        $this->db->join('siswa s', 's.id_siswa = n.id_siswa');
+        $hasil = $this->db->get();
+        if ($hasil->num_rows() > 0) {
+            return $hasil->result();
+        } else {
+            return false;
+        }
     }
 
-    public function ambil_id_guru($id)
+    public function ambil_id_siswa($id)
     {
-        $this->db->select('*, m.nama_mapel as nama_mapel');
-        $this->db->from('guru g');
-        $this->db->join('mapel m', 'm.id_mapel=g.id_mapel');
+        $this->db->select('*');
+        $this->db->from('nilai s');
+        $this->db->join('nilai_detail k', 'k.id_kelas = s.id_kelas');
         $this->db->where('username', $id);
         $hasil = $this->db->get();
         if ($hasil->num_rows() > 0) {

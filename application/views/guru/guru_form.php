@@ -60,10 +60,10 @@
             <input type="hidden" name="password" value="guru123">
             <input type="hidden" name="level" value="guru">
             <button type="submit" class="btn btn-primary mb-5">Simpan</button>
+            <?= anchor('administrator/guru', '<div class="btn btn-info mb-5">Kembali</div>') ?>
 
         </div>
     </div>
 
-    <?= anchor('administrator/guru', '<div class="btn btn-primary btn-sm mb-5">Kembali</div>') ?>
     <?php form_close(); ?>
 </div>

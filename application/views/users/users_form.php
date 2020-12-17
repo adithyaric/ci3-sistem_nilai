@@ -6,19 +6,20 @@
   <form action="<?= base_url('administrator/users/tambah_users_aksi') ?>" method="post">
     <div class="row">
       <div class="col-md-6">
+        <?= @$this->session->flashdata('msg') ?>
         <div class="form-group">
           <label for="">Username</label>
-          <input type="text" name="username" placeholder="Masukkan username" class="form-control">
+          <input type="text" name="username" value="<?= set_value('username'); ?>" placeholder="Masukkan username" class="form-control">
           <?= form_error('username', '<div class="text-danger small">', '</div>'); ?>
         </div>
         <div class="form-group">
           <label for="">Password</label>
-          <input type="password" name="password" placeholder="Masukkan password" class="form-control">
+          <input type="password" name="password" value="<?= set_value('password'); ?>" placeholder="Masukkan password" class="form-control">
           <?= form_error('password', '<div class="text-danger small">', '</div>'); ?>
         </div>
         <div class="form-group">
           <label for="">Email</label>
-          <input type="text" name="email" placeholder="Masukkan email" class="form-control">
+          <input type="text" name="email" value="<?= set_value('email'); ?>" placeholder="Masukkan email" class="form-control">
           <?= form_error('email', '<div class="text-danger small">', '</div>'); ?>
         </div>
         <div class="form-group">
@@ -46,9 +47,10 @@
               <option value="<?= $gr->id_kelas; ?>"><?= $gr->nama_kelas; ?></option>
             <?php endforeach; ?>
           </select>
-          <?= form_error('nama_kelas', '<div class="text-danger small">', '</div>'); ?>
+          <?= form_error('id_kelas', '<div class="text-danger small">', '</div>'); ?>
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
+        <?= anchor('administrator/users', '<div class="btn btn-info">Kembali</div>') ?>
       </div>
     </div>
   </form>
