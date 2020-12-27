@@ -58,7 +58,6 @@
                 <?= form_error('id_mapel', '<div class="text-danger small">', '</div>'); ?>
             </div>
             <input type="hidden" name="password" value="guru123">
-            <input type="hidden" name="level" value="guru">
             <button type="submit" class="btn btn-primary mb-5">Simpan</button>
             <?= anchor('administrator/guru', '<div class="btn btn-info mb-5">Kembali</div>') ?>
 

@@ -6,6 +6,14 @@ class Guru extends CI_Controller
   {
     parent::__construct();
     $this->load->model('guru_model');
+    //validasi jika user belum login
+    if ($this->session->userdata('masuk') != TRUE) {
+      echo '<script>alert("Anda harus login terlebih dahulu");</script>';
+      echo '<script>window.location.href = "' . base_url() . '";</script>';
+    } else if ($this->session->userdata('akses') != 'admin') {
+      echo '<script>alert("Anda tidak diizinkan mengakses halaman ini");</script>';
+      echo '<script>window.location.href = "' . base_url() . '";</script>';
+    }
   }
 
   public function index()
@@ -44,7 +52,6 @@ class Guru extends CI_Controller
     $telp          = $this->input->post('telp');
     $id_mapel      = $this->input->post('id_mapel');
     $password      = $this->input->post('password');
-    $level         = $this->input->post('level');
     $photo         = $_FILES['photo']['name'];
 
     $cek = $this->db->get_where('guru', array('username' => $username));
@@ -88,7 +95,7 @@ class Guru extends CI_Controller
         'telp'          => $telp,
         'photo'         => $photo,
         'id_mapel'      => $id_mapel,
-        'level'         => $level
+        // 'level'         => $level
       );
 
       $this->guru_model->insert_data($data, 'guru');

@@ -48,7 +48,6 @@
                 <?= form_error('photo', '<div class="text-danger small">', '</div>'); ?>
             </div>
             <input type="hidden" name="password" value="siswa123">
-            <input type="hidden" name="level" value="siswa">
             <button type="submit" class="btn btn-primary mb-5">Simpan</button>
             <?= anchor('administrator/siswa', '<div class="btn btn-info mb-5">Kembali</div>') ?>
         </div>

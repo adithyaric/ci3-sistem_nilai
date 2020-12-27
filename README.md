@@ -3,14 +3,17 @@
 - Nama  : Muhammad Adithya Ricky Ichsan 
 - Nim   : 18.12.0718
 - Kelas : 18-S1-SI-03
-
-- [ ] Landing Page
-- [ ] Login Page
+***
+- [x] Membuat Database;
+- [x] Konfigurasi Codeigntier
+- [50%] Landing Page
+- [35%] Login Page
 - [x] Kelas
 - [x] Mapel
 - [x] Guru
-- [ ] - Nilai_Detail
+- [50%] - Input Nilai
 - [x] Siswa
 - [x] Users (Admin & Wali Kelas)
-- [ ] - Nilai Oleh Wali Kelas
+- [25%] - Olah Nilai Wali Kelas
 - [ ] Cetak Raport
+- [ ] Perbaikan dan Improvement

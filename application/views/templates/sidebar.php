@@ -1,5 +1,4 @@
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -25,40 +24,45 @@
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-chalkboard"></i>
-                    <span>Akademik</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Sub-Menu Akademik : </h6>
-                        <a class="collapse-item" href="<?= base_url('administrator/mapel') ?>">Mapel</a>
-                        <a class="collapse-item" href="<?= base_url('administrator/kelas') ?>">Kelas</a>
-                        <hr>
-                        <a class="collapse-item" href="<?= base_url('administrator/guru') ?>">Guru</a>
-                        <a class="collapse-item" href="<?= base_url('administrator/siswa') ?>">Siswa</a>
-                        <!-- <a class="collapse-item" href="<?= base_url('administrator/nilai') ?>">Nilai</a> -->
+            <?php if ($this->session->userdata('akses') == 'admin') : ?>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-chalkboard"></i>
+                        <span>Akademik</span>
+                    </a>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Sub-Menu Akademik : </h6>
+                            <a class="collapse-item" href="<?= base_url('administrator/mapel') ?>">Mapel</a>
+                            <a class="collapse-item" href="<?= base_url('administrator/kelas') ?>">Kelas</a>
+                            <hr>
+                            <a class="collapse-item" href="<?= base_url('administrator/guru') ?>">Guru</a>
+                            <a class="collapse-item" href="<?= base_url('administrator/siswa') ?>">Siswa</a>
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
+            <?php endif ?>
+            <?php if ($this->session->userdata('akses') == 'admin' || $this->session->userdata('akses') == 'guru' || $this->session->userdata('akses') == 'wali_kelas') : ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('penilaian/nilai'); ?>">
+                        <i class="fas fa-edit"></i>
+                        <span>Nilai</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('penilaian/raport'); ?>">
+                        <i class="fas fa-edit"></i>
+                        <span>Raport</span></a>
+                </li>
+            <?php endif ?>
+            <?php if ($this->session->userdata('akses') == 'admin') : ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('administrator/users') ?>">
+                        <i class="fas fa-fw fa-wrench"></i>
+                        <span>User</span></a>
+                </li>
+            <?php endif ?>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('welcome'); ?>">
-                    <i class="fas fa-edit"></i>
-                    <span>Nilai : oleh Guru</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('welcome'); ?>">
-                    <i class="fas fa-edit"></i>
-                    <span>Nilai : oleh Wali Kelas</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('administrator/users') ?>">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>User</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('welcome'); ?>" onclick="return confirm('Yakin akan logout?')">
+                <a class="nav-link" href="<?= base_url('auth/logout'); ?>" onclick="return confirm('Yakin akan logout?')">
                     <i class="fas fa-fw fa-sign-out-alt"></i>
                     <span>Logout</span></a>
             </li>
@@ -120,8 +124,12 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="<?= base_url() ?>assets/img/undraw_profile.svg">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $this->session->userdata('ses_nama'); ?></span>
+                                <?php if (empty($this->session->userdata('ses_photo'))) {
+                                    echo " ";
+                                } else { ?>
+                                    <img class="img-profile rounded-circle" src="<?= base_url('assets/uploads/' . $this->session->userdata('ses_photo')) ?>">
+                                <?php } ?>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -138,7 +146,7 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="<?= base_url('auth/logout') ?>">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>

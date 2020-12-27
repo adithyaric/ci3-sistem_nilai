@@ -15,6 +15,13 @@
     <script src="<?= base_url() ?>assets/js/demo/chart-area-demo.js"></script>
     <script src="<?= base_url() ?>assets/js/demo/chart-pie-demo.js"></script>
 
+    <?php $this->load->view("templates/modal.php") ?>
+    <script>
+        function deleteConfirm(url) {
+            $('#btn-delete').attr('href', url);
+            $('#deleteModal').modal();
+        }
+    </script>
     </body>
 
     </html>
