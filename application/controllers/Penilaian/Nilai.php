@@ -24,7 +24,7 @@ class Nilai extends CI_Controller
             $data['nilai'] = $this->Nilai_model->getData();
         }
 
-        $data['mapel'] = $this->Nilai_model->get($id_mapel);
+        $data['kelas'] = $this->Nilai_model->get($id_wali);
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
         $this->load->view('nilai/nilai', $data);
@@ -77,7 +77,44 @@ class Nilai extends CI_Controller
             exit();
         }
     }
+    public function update($id)
+    {
+        $data['nilai'] = $this->Nilai_model->getDataByID($id);
 
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('nilai/nilai_update', $data);
+        $this->load->view('templates/footer');
+    }
+    public function update_aksi()
+    {
+        $id      = $this->input->post('id_nilai');
+        $tugas   = $this->input->post('tugas');
+        $uts     = $this->input->post('uts');
+        $uas     = $this->input->post('uas');
+
+        $data = array(
+            'tugas' => $tugas,
+            'uts' => $uts,
+            'uas' => $uas
+        );
+
+        $where = array(
+            'id_nilai' => $id
+        );
+
+        $this->Nilai_model->update_data($where, $data, 'nilai');
+        $this->session->set_flashdata(
+            'pesan',
+            '<div class="alert alert-success alert-dismissible fade show" role="alert">
+          Data Nilai berhasil diupdate
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>'
+        );
+        redirect('penilaian/nilai');
+    }
     public function delete($id)
     {
         $where = array('id_nilai' => $id);

@@ -48,12 +48,13 @@
                         <i class="fas fa-edit"></i>
                         <span>Nilai</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('penilaian/raport'); ?>">
-                        <i class="fas fa-edit"></i>
-                        <span>Raport</span></a>
-                </li>
             <?php endif ?>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('penilaian/raport'); ?>">
+                    <i class="fas fa-edit"></i>
+                    <span>Raport</span></a>
+            </li>
+
             <?php if ($this->session->userdata('akses') == 'admin') : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('administrator/users') ?>">
