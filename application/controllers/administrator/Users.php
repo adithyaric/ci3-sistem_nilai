@@ -6,6 +6,14 @@ class Users extends CI_Controller
     {
         parent::__construct();
         $this->load->model('user_model');
+        //validasi jika user belum login
+        if ($this->session->userdata('masuk') != TRUE) {
+            echo '<script>alert("Anda harus login terlebih dahulu");</script>';
+            echo '<script>window.location.href = "' . base_url('auth') . '";</script>';
+        } else if ($this->session->userdata('akses') != 'admin') {
+            echo '<script>alert("Anda tidak diizinkan mengakses halaman ini");</script>';
+            echo '<script>window.location.href = "' . base_url('administrator/dashboard') . '";</script>';
+        }
     }
     public function index()
     {
