@@ -17,5 +17,10 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url() ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
-
+    <style>
+        .w-100 {
+            width: 100% !important;
+            height: 80vh;
+        }
+    </style>
 </head>

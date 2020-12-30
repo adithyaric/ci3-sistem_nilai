@@ -3,7 +3,7 @@
         <img width="100px" src="<?= base_url('assets/img/logo.png') ?>" class="" alt="...">
         <strong>SMA N 1 Grabag</strong>
     </a>
-    <span class="small">126734, Susukan, Grabag, Kec. Grabag, Magelang, Jawa Tengah 56196 - sma1grb@sma1grb.sch.id - (0293) 3148143</span>
+    <span class="small" style="color: black;">126734, Susukan, Grabag, Kec. Grabag, Magelang, Jawa Tengah 56196 - sma1grb@sma1grb.sch.id - (0293) 3148143</span>
 
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

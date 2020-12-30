@@ -24,7 +24,7 @@
       <th align="center">TUGAS</th>
       <th align="center">UTS</th>
       <th align="center">UAS</th>
-      <th align="center">Total</th>
+      <th align="center">Rata-Rata</th>
     </tr>
 
     <?php
@@ -32,8 +32,9 @@
 
     foreach ($nilai as $s) :
       $total = 0;
+      $rata = 0;
       $total = $s['tugas'] + $s['uts'] + $s['uas'];
-
+      $rata = $total / 3;
     ?>
 
       <tr>
@@ -42,7 +43,7 @@
         <td align="center"><?= $s['tugas']; ?></td>
         <td align="center"><?= $s['uts']; ?></td>
         <td align="center"><?= $s['uas']; ?></td>
-        <td align="center"><?= $total; ?></td>
+        <td align="center"><?= $rata; ?></td>
       </tr>
     <?php endforeach; ?>
 

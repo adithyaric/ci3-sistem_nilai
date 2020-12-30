@@ -4,16 +4,18 @@
 - Nim   : 18.12.0718
 - Kelas : 18-S1-SI-03
 ***
+- [ ] Menambah Semester 
+- [25%] Perbaikan dan Improvement
+- [50%] Cetak Raport -> Print To PDF
+- [85%] Landing Page
+
 - [x] Membuat Database;
 - [x] Konfigurasi Codeigntier
-- [50%] Landing Page
-- [35%] Login Page
+- [x] Login Page
 - [x] Kelas
 - [x] Mapel
 - [x] Guru
-- [50%] - Input Nilai
 - [x] Siswa
 - [x] Users (Admin & Wali Kelas)
-- [25%] - Olah Nilai Wali Kelas
-- [ ] Cetak Raport
-- [ ] Perbaikan dan Improvement
+- [x] - Olah Nilai Wali Kelas
+- [x] - Input Nilai
