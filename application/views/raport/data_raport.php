@@ -21,10 +21,8 @@
     <tr>
       <th>NO</th>
       <th>MATA Pelajaran</th>
-      <th align="center">TUGAS</th>
-      <th align="center">UTS</th>
-      <th align="center">UAS</th>
-      <th align="center">Rata-Rata</th>
+      <th>KKM</th>
+      <th align="center">Nilai</th>
     </tr>
 
     <?php
@@ -40,9 +38,7 @@
       <tr>
         <td><?= $no++; ?></td>
         <td><?= $s['nama_mapel']; ?></td>
-        <td align="center"><?= $s['tugas']; ?></td>
-        <td align="center"><?= $s['uts']; ?></td>
-        <td align="center"><?= $s['uas']; ?></td>
+        <td><?= $s['kkm']; ?></td>
         <td align="center"><?= $rata; ?></td>
       </tr>
     <?php endforeach; ?>

@@ -36,6 +36,7 @@ class Mapel extends CI_Controller
     public function tambah_mapel_aksi()
     {
         $nama_mapel = $this->input->post('nama_mapel');
+        $kkm = $this->input->post('kkm');
         $cek = $this->db->get_where('mapel', array('nama_mapel' => $nama_mapel));
         if ($cek->num_rows() != 0) {
             $this->session->set_flashdata(
@@ -51,7 +52,10 @@ class Mapel extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->tambah_mapel();
         } else {
-            $data = array('nama_mapel' => $nama_mapel);
+            $data = array(
+                'nama_mapel' => $nama_mapel,
+                'kkm' => $kkm
+            );
 
             $this->mapel_model->insert_data($data, 'mapel');
             $this->session->set_flashdata(
@@ -70,6 +74,7 @@ class Mapel extends CI_Controller
     public function update($id)
     {
         $where = array('id_mapel' => $id);
+
         $data['mapel'] = $this->db->get_where('mapel', $where)->result();
 
         $this->load->view('templates/header');
@@ -82,13 +87,13 @@ class Mapel extends CI_Controller
     {
         $id             = $this->input->post('id_mapel');
         $nama_mapel     = $this->input->post('nama_mapel');
-
+        $kkm = $this->input->post('kkm');
         $this->_rules();
 
         if ($this->form_validation->run() == FALSE) {
             $this->update($id);
         } else {
-            $data = array('nama_mapel' => $nama_mapel,);
+            $data = array('nama_mapel' => $nama_mapel, 'kkm' => $kkm);
 
             $where = array(
                 'id_mapel' => $id
@@ -127,6 +132,9 @@ class Mapel extends CI_Controller
     {
         $this->form_validation->set_rules('nama_mapel', 'nama_mapel', 'required', [
             'required' => 'Nama mata pelajaran wajib diisi!'
+        ]);
+        $this->form_validation->set_rules('kkm', 'kkm', 'required', [
+            'required' => 'kkm pelajaran wajib diisi!'
         ]);
     }
 }

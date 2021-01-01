@@ -25,7 +25,7 @@ class Nilai_model extends CI_Model
         $this->db->join('guru g', 'g.id_guru=n.id_guru');
         $this->db->where('n.id_mapel', $id_mapel);
         $this->db->where('n.id_guru', $id_guru);
-        $this->db->order_by('n.nis', 'asc');
+        $this->db->order_by('n.semester', 'asc');
         return $this->db->get()->result_array();
     }
     //('akses') == 'wali_kelas'

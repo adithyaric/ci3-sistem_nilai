@@ -38,12 +38,21 @@ class Nilai extends CI_Controller
         $config['file_name']            = 'doc' . time();
         $this->load->library('upload', $config);
         if ($this->upload->do_upload('importexcel')) {
-
             $mapel = $this->session->userdata('ses_id_mapel');
             $id_guru = $this->session->userdata('ses_id');
+            $semester = $this->input->post('semester', TRUE);
+            if (empty($semester)) {
+                $this->session->set_flashdata(
+                    'msg',
+                    '<div class="alert alert-warning">
+                    <a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a>
+                    <strong>Semester!</strong> wajib di-isi !</div>'
+                );
+                redirect(base_url() . 'penilaian/nilai');
+                exit();
+            }
             $file = $this->upload->data();
             $reader = ReaderEntityFactory::createXLSXReader();
-
             $reader->open('uploads/' . $file['file_name']);
             foreach ($reader->getSheetIterator() as $sheet) {
                 $numRow = 1;
@@ -55,7 +64,8 @@ class Nilai extends CI_Controller
                             'uts'        => $row->getCellAtIndex(3),
                             'uas'        => $row->getCellAtIndex(4),
                             'id_mapel' => $mapel,
-                            'id_guru' => $id_guru
+                            'id_guru' => $id_guru,
+                            'semester' => $semester
                         );
                         $this->Nilai_model->import_data($databarang);
                     }

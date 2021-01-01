@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Raport_model extends CI_Model
 {
-    public function getDataByID($nis)
+    public function getDataByID($nis, $semester)
     {
         $this->db->select('*');
         $this->db->from('nilai n');
@@ -12,6 +12,7 @@ class Raport_model extends CI_Model
         $this->db->join('siswa s', 's.username = n.nis');
         $this->db->join('kelas k', 'k.id_kelas=s.id_kelas');
         $this->db->where('n.nis', $nis);
+        $this->db->where('n.semester', $semester);
         return $this->db->get()->result_array();
     }
     public function getSiswa($nis)

@@ -17,9 +17,13 @@ class Raport extends CI_Controller
     public function raport_aksi()
     {
         $nis = $this->input->post('nis', TRUE);
+        $semester = $this->input->post('semester', TRUE);
         $cek = $this->db->get_where('siswa', array('username' => $nis));
         $this->form_validation->set_rules('nis', 'nis', 'required', [
             'required' => 'NIS wajib diisi'
+        ]);
+        $this->form_validation->set_rules('semester', 'semester', 'required', [
+            'required' => 'semester wajib diisi'
         ]);
         if ($this->form_validation->run() == FALSE) {
             $this->index();
@@ -34,7 +38,7 @@ class Raport extends CI_Controller
                 redirect(base_url() . 'penilaian/raport');
                 exit();
             }
-            $data['nilai'] = $this->Raport_model->getDataByID($nis);
+            $data['nilai'] = $this->Raport_model->getDataByID($nis, $semester);
             $data['siswa'] = $this->Raport_model->getSiswa($nis);
             $this->load->view('templates/header');
             $this->load->view('templates/sidebar');

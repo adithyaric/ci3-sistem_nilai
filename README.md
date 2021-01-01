@@ -4,10 +4,11 @@
 - Nim   : 18.12.0718
 - Kelas : 18-S1-SI-03
 ***
-- [ ] Menambah Semester 
+- [x] Menambah Semester
+- [x] Menambah KKM -> Mapel
 - [25%] Perbaikan dan Improvement
 - [50%] Cetak Raport -> Print To PDF
-- [85%] Landing Page
+- [x] Landing Page
 
 - [x] Membuat Database;
 - [x] Konfigurasi Codeigntier
