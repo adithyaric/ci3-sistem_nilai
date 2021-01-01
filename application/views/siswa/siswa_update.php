@@ -10,10 +10,15 @@
             <div class="col-md-6">
 
                 <div class="form-group">
-                    <label for="">nis</label>
+                    <label for="">NIS</label>
                     <input type="hidden" name="id_siswa" value="<?= $gr->id_siswa; ?>">
                     <input type="text" name="username" class="form-control" value="<?= $gr->username; ?>">
                     <?= form_error('username', '<div class="text-danger small">', '</div>'); ?>
+                </div>
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" name="password" placeholder="Masukkan password" class="form-control" value="<?= $gr->password ?>">
+                    <?= form_error('password', '<div class="text-danger small">', '</div>'); ?>
                 </div>
                 <div class="form-group">
                     <label for="">Nama siswa</label>
@@ -28,8 +33,14 @@
                 <div class="form-group">
                     <label for="">Jenis Kelamin</label>
                     <select name="jenis_kelamin" id="" class="form-control" value="<?= $gr->jenis_kelamin; ?>">
-                        <option>Laki-laki</option>
-                        <option>Perempuan</option>
+                        <?php if ($gr->jenis_kelamin == 'Laki-Laki') { ?>
+                            <option selected>Laki-laki</option>
+                            <option>Perempuan</option>
+                        <?php } elseif ($gr->jenis_kelamin == 'Perempuan') { ?>
+                            <option>Laki-laki</option>
+                            <option selected>Perempuan</option>
+                        <?php } ?>
+
                     </select>
                     <?= form_error('jenis_kelamin', '<div class="text-danger small">', '</div>'); ?>
                 </div>

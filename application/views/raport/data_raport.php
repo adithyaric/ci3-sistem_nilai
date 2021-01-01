@@ -1,22 +1,22 @@
 <div class="container-fluid">
   <center>
-    <legend><strong>Raport</strong></legend>
-    <table>
-      <tr>
-        <td>NIS</td>
-        <td>: <?= $siswa->username; ?></td>
-      </tr>
+    <legend><strong>CAPAIAN HASIL BELAJAR</strong></legend>
+    <table class="table table-hover mt-3 col-md-6">
       <tr>
         <td>NAMA</td>
-        <td>: <?= $siswa->nama_siswa; ?></td>
-      </tr>
-      <tr>
+        <td>:</td>
+        <td><b><?= $siswa->nama_siswa; ?></b></td>
         <td>Kelas</td>
-        <td>: <?= $siswa->nama_kelas; ?></td>
+        <td>:</td>
+        <td><?= $siswa->nama_kelas; ?></td>
       </tr>
       <tr>
+        <td>NIS</td>
+        <td>:</td>
+        <td><?= $siswa->username; ?></td>
         <td>Semester </td>
-        <td>:
+        <td>:</td>
+        <td>
           <?php if ($semester == '1') {
             echo "Ganjil";
           } else {
@@ -26,7 +26,7 @@
       </tr>
     </table>
   </center>
-
+  <hr>
   <table class="table table-bordered table-striped table-hover mt-3">
     <tr>
       <th>NO</th>

@@ -4,9 +4,9 @@
 - Nim   : 18.12.0718
 - Kelas : 18-S1-SI-03
 ***
-- [ ] Tampilan Dashboard Tiap user
-- [ ] Edit password Siswa & Guru
-- [50%] Perbaikan dan Improvement
+- [x] Tampilan Dashboard Tiap user
+- [x] Edit password Siswa & Guru
+- [90%] Perbaikan dan Improvement
 - [50%] Cetak Raport -> Print To PDF
 
 - [x] Menambah Semester

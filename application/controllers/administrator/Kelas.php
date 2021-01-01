@@ -12,7 +12,7 @@ class Kelas extends CI_Controller
             echo '<script>window.location.href = "' . base_url('auth') . '";</script>';
         } else if ($this->session->userdata('akses') != 'admin') {
             echo '<script>alert("Anda tidak diizinkan mengakses halaman ini");</script>';
-            echo '<script>window.location.href = "' . base_url('administrator/dashboard') . '";</script>';
+            echo '<script>window.location.href = "' . base_url('dashboard') . '";</script>';
         }
     }
 

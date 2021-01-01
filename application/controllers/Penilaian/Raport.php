@@ -1,5 +1,4 @@
 <?php
-
 class Raport extends CI_Controller
 {
     function __construct()
@@ -12,7 +11,6 @@ class Raport extends CI_Controller
             echo '<script>window.location.href = "' . base_url('auth') . '";</script>';
         }
     }
-
     public function index()
     {
         $this->load->view('templates/header');

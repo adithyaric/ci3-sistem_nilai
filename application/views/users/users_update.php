@@ -27,31 +27,26 @@
           <div class="form-group">
             <label for="">Level</label>
             <select name="level" id="" class="form-control">
-              <option value="admin" selected>Admin</option>
-              <option value="wali_kelas">Wali Kelas</option>
+              <?php if ($user->level == 'admin') { ?>
+                <option value="admin" selected>Admin</option>
+                <option value="wali_kelas">Wali Kelas</option>
+              <?php } elseif ($user->level == 'wali_kelas') { ?>
+                <option value="admin">Admin</option>
+                <option value="wali_kelas" selected>Wali Kelas</option>
+              <?php } ?>
             </select>
             <?= form_error('level', '<div class="text-danger small">', '</div>'); ?>
           </div>
-
           <div class="form-group">
             <label for="">Blokir</label>
             <select name="blokir" id="" class="form-control">
-              <?php
-              if ($blokir == 'Y') { ?>
+              <?php if ($user->blokir == 'Y') { ?>
                 <option value="Y" selected>Ya</option>
                 <option value="N">Tidak</option>
-              <?php
-              } elseif ($blokir == 'N') { ?>
-
-                <option value="Y">Ya</option>
-                <option value="N" selected>Tidak</option>
-              <?php
-              } else { ?>
-
+              <?php } elseif ($user->blokir == 'N') { ?>
                 <option value="Y">Ya</option>
                 <option value="N" selected>Tidak</option>
               <?php } ?>
-
             </select>
             <?= form_error('blokir', '<div class="text-danger small">', '</div>'); ?>
           </div>
@@ -71,6 +66,5 @@
         </div>
       </div>
     </form>
-
   <?php endforeach; ?>
 </div>

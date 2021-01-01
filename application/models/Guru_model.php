@@ -12,7 +12,7 @@ class Guru_model extends CI_Model
         $this->db->select('*, m.nama_mapel as nama_mapel');
         $this->db->from('guru g');
         $this->db->join('mapel m', 'm.id_mapel=g.id_mapel');
-        $this->db->where('username', $id);
+        $this->db->where('g.username', $id);
         $hasil = $this->db->get();
         if ($hasil->num_rows() > 0) {
             return $hasil->result();

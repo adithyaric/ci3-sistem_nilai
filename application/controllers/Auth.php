@@ -35,10 +35,15 @@ class Auth extends CI_Controller
                 $this->session->set_userdata('ses_nis', $data['username']);
                 $this->session->set_userdata('ses_nama', $data['nama_siswa']);
                 $this->session->set_userdata('ses_photo', $data['photo']);
-                redirect('administrator/dashboard');
+                redirect('dashboard');
             } else {  // jika username dan password tidak ditemukan atau salah
                 $url = base_url('auth');
-                echo $this->session->set_flashdata('msg', 'Username atau Password Salah');
+                $this->session->set_flashdata(
+                    'msg',
+                    '<div class="alert alert-warning">
+                    <a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a>
+                    Username atau Password Salah</div>'
+                );
                 redirect($url);
             }
         } else if ($rule == 'guru') {
@@ -50,10 +55,15 @@ class Auth extends CI_Controller
                 $this->session->set_userdata('ses_id_mapel', $data['id_mapel']);
                 $this->session->set_userdata('ses_nama', $data['nama_guru']);
                 $this->session->set_userdata('ses_photo', $data['photo']);
-                redirect('administrator/dashboard');
+                redirect('dashboard');
             } else {  // jika username dan password tidak ditemukan atau salah
                 $url = base_url('auth');
-                echo $this->session->set_flashdata('msg', 'Username atau Password Salah');
+                $this->session->set_flashdata(
+                    'msg',
+                    '<div class="alert alert-warning">
+                    <a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a>
+                    Username atau Password Salah</div>'
+                );
                 redirect($url);
             }
         } else {
@@ -65,22 +75,32 @@ class Auth extends CI_Controller
                         $this->session->set_userdata('akses', 'admin');
                         $this->session->set_userdata('ses_id', $data['id']);
                         $this->session->set_userdata('ses_nama', $data['username']);
-                        redirect('administrator/dashboard');
+                        redirect('dashboard');
                     } else {
                         $this->session->set_userdata('akses', 'wali_kelas');
                         $this->session->set_userdata('ses_id', $data['id']);
                         $this->session->set_userdata('ses_id_kelas', $data['id_kelas']);
                         $this->session->set_userdata('ses_nama', $data['username']);
-                        redirect('administrator/dashboard');
+                        redirect('dashboard');
                     }
                 } else {
                     $url = base_url('auth');
-                    echo $this->session->set_flashdata('msg', 'Akun anda sudah diblokir, silahkan hubungi admin');
+                    $this->session->set_flashdata(
+                        'msg',
+                        '<div class="alert alert-danger">
+                        <a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a>
+                        Akun anda sudah <strong>diblokir</strong>, silahkan hubungi admin !</div>'
+                    );
                     redirect($url);
                 }
             } else {  // jika username dan password tidak ditemukan atau salah
                 $url = base_url('auth');
-                echo $this->session->set_flashdata('msg', 'Username atau Password Salah');
+                $this->session->set_flashdata(
+                    'msg',
+                    '<div class="alert alert-warning">
+                    <a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a>
+                    Username atau Password Salah</div>'
+                );
                 redirect($url);
             }
             ///

@@ -12,7 +12,7 @@ class Siswa extends CI_Controller
       echo '<script>window.location.href = "' . base_url('auth') . '";</script>';
     } else if ($this->session->userdata('akses') != 'admin') {
       echo '<script>alert("Anda tidak diizinkan mengakses halaman ini");</script>';
-      echo '<script>window.location.href = "' . base_url('administrator/dashboard') . '";</script>';
+      echo '<script>window.location.href = "' . base_url('dashboard') . '";</script>';
     }
   }
 
@@ -125,6 +125,7 @@ class Siswa extends CI_Controller
 
     $id            = $this->input->post('id_siswa');
     $username      = $this->input->post('username');
+    $password      = $this->input->post('password');
     $nama_siswa    = $this->input->post('nama_siswa');
     $alamat        = $this->input->post('alamat');
     $jenis_kelamin = $this->input->post('jenis_kelamin');
@@ -146,6 +147,7 @@ class Siswa extends CI_Controller
 
     $data = array(
       'username'       => $username,
+      'password'      => $password,
       'nama_siswa'    => $nama_siswa,
       'alamat'        => $alamat,
       'jenis_kelamin' => $jenis_kelamin,

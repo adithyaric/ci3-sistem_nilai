@@ -1,9 +1,9 @@
-<nav class="navbar navbar-light text-light" style="background-color: #f0f0f0;">
+<nav class="navbar navbar-light text-light" style="background-color: #ECEFF4;">
     <a class="navbar-brand">
-        <img width="100px" src="<?= base_url('assets/img/logo.png') ?>" class="" alt="...">
-        <strong>SMA N 1 Grabag</strong>
+        <img height="55vmin" src="<?= base_url('assets/img/logo_.png') ?>" class="" alt="...">
+        <!-- <strong>SMA N 1 Grabag</strong> -->
     </a>
-    <span class="small" style="color: black;">126734, Susukan, Grabag, Kec. Grabag, Magelang, Jawa Tengah 56196 - sma1grb@sma1grb.sch.id - (0293) 3148143</span>
+    <span class="small" style="color: black;"> 126734, <b>Susukan, Grabag, Kec. Grabag, Magelang, Jawa Tengah</b> 56196 - <i>sma1grb@sma1grb.sch.id</i> - (0293) 3148143</span>
 
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

@@ -16,6 +16,11 @@
                     <?= form_error('username', '<div class="text-danger small">', '</div>'); ?>
                 </div>
                 <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" name="password" placeholder="Masukkan password" class="form-control" value="<?= $gr->password ?>">
+                    <?= form_error('password', '<div class="text-danger small">', '</div>'); ?>
+                </div>
+                <div class="form-group">
                     <label for="">Nama guru</label>
                     <input type="text" name="nama_guru" class="form-control" value="<?= $gr->nama_guru; ?>">
                     <?= form_error('nama_guru', '<div class="text-danger small">', '</div>'); ?>
@@ -28,8 +33,13 @@
                 <div class="form-group">
                     <label for="">Jenis Kelamin</label>
                     <select name="jenis_kelamin" id="" class="form-control" value="<?= $gr->jenis_kelamin; ?>">
-                        <option>Laki-laki</option>
-                        <option>Perempuan</option>
+                        <?php if ($gr->jenis_kelamin == 'Laki-Laki') { ?>
+                            <option selected>Laki-laki</option>
+                            <option>Perempuan</option>
+                        <?php } elseif ($gr->jenis_kelamin == 'Perempuan') { ?>
+                            <option>Laki-laki</option>
+                            <option selected>Perempuan</option>
+                        <?php } ?>
                     </select>
                     <?= form_error('jenis_kelamin', '<div class="text-danger small">', '</div>'); ?>
                 </div>
@@ -62,7 +72,7 @@
                     <?= form_error('id_mapel', '<div class="text-danger small">', '</div>'); ?>
                 </div>
                 <button type="submit" class="btn btn-primary mb-5">Simpan</button>
-                <?= anchor('administrator/guru', '<div class="btn btn-info btn-sm mb-5">Kembali</div>') ?>
+                <?= anchor('administrator/guru', '<div class="btn btn-info mb-5">Kembali</div>') ?>
             </div>
         </div>
         <?php form_close(); ?>
