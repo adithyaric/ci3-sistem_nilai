@@ -14,6 +14,16 @@
         <td>Kelas</td>
         <td>: <?= $siswa->nama_kelas; ?></td>
       </tr>
+      <tr>
+        <td>Semester </td>
+        <td>:
+          <?php if ($semester == '1') {
+            echo "Ganjil";
+          } else {
+            echo "Genap";
+          } ?>
+        </td>
+      </tr>
     </table>
   </center>
 
@@ -23,26 +33,65 @@
       <th>MATA Pelajaran</th>
       <th>KKM</th>
       <th align="center">Nilai</th>
+      <th>Predikat</th>
     </tr>
 
     <?php
     $no = 1;
-
+    $x = 0;
+    $totalRata = 0;
+    $RataRata = 0;
     foreach ($nilai as $s) :
-      $total = 0;
-      $rata = 0;
-      $total = $s['tugas'] + $s['uts'] + $s['uas'];
-      $rata = $total / 3;
-    ?>
+      $n_mapel   = array($s['tugas'], $s['uts'], $s['uas']);
+      $sum_mapel = array_sum($n_mapel);
+      $jml_mapel = count($n_mapel);
+      $rata_rata = number_format($sum_mapel / $jml_mapel);
+      $x++; ///
+      $totalRata += $rata_rata;
 
+      $RataRata = number_format($totalRata / $x);
+    ?>
       <tr>
         <td><?= $no++; ?></td>
-        <td><?= $s['nama_mapel']; ?></td>
+        <td>
+          <?= $s['nama_mapel'] . "<br>" .
+            "<small>" . $s['nama_guru'] . "</small>"; ?>
+        </td>
         <td><?= $s['kkm']; ?></td>
-        <td align="center"><?= $rata; ?></td>
+        <td align="center"><?= $rata_rata; ?></td>
+        <td align="center">
+          <?php
+          if ($rata_rata <= 100 && $rata_rata >= 81) {
+            echo "A";
+          } else if ($rata_rata <= 80 && $rata_rata >= 71) {
+            echo "B";
+          } else if ($rata_rata <= 70 && $rata_rata >= 61) {
+            echo "C";
+          } else {
+            echo "D";
+          }
+          ?>
+        </td>
       </tr>
     <?php endforeach; ?>
-
+    <tr>
+      <td colspan="3">Jumlah</td>
+      <td align="center">
+        <?php if (!empty($rata_rata)) {
+          echo $totalRata;
+        }
+        ?></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="3">Rata-rata</td>
+      <td align="center">
+        <?php if (!empty($rata_rata)) {
+          echo $RataRata;
+        }
+        ?></td>
+      <td></td>
+    </tr>
   </table>
-
+  <?= anchor('penilaian/raport', '<div class="btn btn-info btn-sm mb-5">Kembali</div>') ?>
 </div>

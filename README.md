@@ -4,12 +4,14 @@
 - Nim   : 18.12.0718
 - Kelas : 18-S1-SI-03
 ***
+- [ ] Tampilan Dashboard Tiap user
+- [ ] Edit password Siswa & Guru
+- [50%] Perbaikan dan Improvement
+- [50%] Cetak Raport -> Print To PDF
+
 - [x] Menambah Semester
 - [x] Menambah KKM -> Mapel
-- [25%] Perbaikan dan Improvement
-- [50%] Cetak Raport -> Print To PDF
 - [x] Landing Page
-
 - [x] Membuat Database;
 - [x] Konfigurasi Codeigntier
 - [x] Login Page

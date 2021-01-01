@@ -6,7 +6,13 @@ class Raport extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Raport_model');
+        //validasi jika user belum login
+        if ($this->session->userdata('masuk') != TRUE) {
+            echo '<script>alert("Anda harus login terlebih dahulu");</script>';
+            echo '<script>window.location.href = "' . base_url('auth') . '";</script>';
+        }
     }
+
     public function index()
     {
         $this->load->view('templates/header');
@@ -39,6 +45,7 @@ class Raport extends CI_Controller
                 exit();
             }
             $data['nilai'] = $this->Raport_model->getDataByID($nis, $semester);
+            $data['semester'] = $semester;
             $data['siswa'] = $this->Raport_model->getSiswa($nis);
             $this->load->view('templates/header');
             $this->load->view('templates/sidebar');

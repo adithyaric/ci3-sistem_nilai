@@ -66,9 +66,9 @@
                                         <td><?php
 
                                             if ($n['semester'] == '1') {
-                                                echo "Genap";
-                                            } else {
                                                 echo "Ganjil";
+                                            } else {
+                                                echo "Genap";
                                             }
 
                                             ?></td>

@@ -59,24 +59,31 @@ class Auth extends CI_Controller
         } else {
             if ($cek_users->num_rows() > 0) {
                 $data = $cek_users->row_array();
-                $this->session->set_userdata('masuk', TRUE);
-                if ($data['level'] == 'admin') {
-                    $this->session->set_userdata('akses', 'admin');
-                    $this->session->set_userdata('ses_id', $data['id']);
-                    $this->session->set_userdata('ses_nama', $data['username']);
-                    redirect('administrator/dashboard');
+                if ($data['blokir'] == 'N') {
+                    $this->session->set_userdata('masuk', TRUE);
+                    if ($data['level'] == 'admin') {
+                        $this->session->set_userdata('akses', 'admin');
+                        $this->session->set_userdata('ses_id', $data['id']);
+                        $this->session->set_userdata('ses_nama', $data['username']);
+                        redirect('administrator/dashboard');
+                    } else {
+                        $this->session->set_userdata('akses', 'wali_kelas');
+                        $this->session->set_userdata('ses_id', $data['id']);
+                        $this->session->set_userdata('ses_id_kelas', $data['id_kelas']);
+                        $this->session->set_userdata('ses_nama', $data['username']);
+                        redirect('administrator/dashboard');
+                    }
                 } else {
-                    $this->session->set_userdata('akses', 'wali_kelas');
-                    $this->session->set_userdata('ses_id', $data['id']);
-                    $this->session->set_userdata('ses_id_kelas', $data['id_kelas']);
-                    $this->session->set_userdata('ses_nama', $data['username']);
-                    redirect('administrator/dashboard');
+                    $url = base_url('auth');
+                    echo $this->session->set_flashdata('msg', 'Akun anda sudah diblokir, silahkan hubungi admin');
+                    redirect($url);
                 }
             } else {  // jika username dan password tidak ditemukan atau salah
                 $url = base_url('auth');
                 echo $this->session->set_flashdata('msg', 'Username atau Password Salah');
                 redirect($url);
             }
+            ///
         }
     }
 

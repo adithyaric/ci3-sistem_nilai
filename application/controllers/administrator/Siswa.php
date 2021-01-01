@@ -45,12 +45,12 @@ class Siswa extends CI_Controller
   public function tambah_siswa_aksi()
   {
     $username      = $this->input->post('username', true);
+    $password      = $this->input->post('password');
     $nama_siswa    = $this->input->post('nama_siswa');
     $alamat        = $this->input->post('alamat');
     $jenis_kelamin = $this->input->post('jenis_kelamin');
     $id_kelas    = $this->input->post('id_kelas');
     $photo         = $_FILES['photo']['name'];
-
     $cek = $this->db->get_where('siswa', array('username' => $username));
     if ($cek->num_rows() != 0) {
       $this->session->set_flashdata(
@@ -90,6 +90,7 @@ class Siswa extends CI_Controller
         'jenis_kelamin' => $jenis_kelamin,
         'id_kelas'      => $id_kelas,
         'photo'         => $photo,
+        'password' => $password
       );
 
       $this->siswa_model->insert_data($data, 'siswa');
@@ -188,6 +189,9 @@ class Siswa extends CI_Controller
   {
     $this->form_validation->set_rules('username', 'username', 'required', [
       'required' => 'nis wajib diisi!'
+    ]);
+    $this->form_validation->set_rules('password', 'password', 'required', [
+      'required' => 'Password wajib diisi!'
     ]);
     $this->form_validation->set_rules('nama_siswa', 'nama_siswa', 'required', [
       'required' => 'Nama siswa wajib diisi!'

@@ -14,6 +14,12 @@
                 <?= form_error('username', '<div class="text-danger small">', '</div>'); ?>
             </div>
             <div class="form-group">
+                <label for="">Password</label>
+                <input type="password" name="password" value="<?= set_value('password'); ?>" class="form-control">
+                <?= form_error('password', '<div class="text-danger small">', '</div>'); ?>
+                <!-- <input type="hidden" name="password" value="guru123"> -->
+            </div>
+            <div class="form-group">
                 <label for="">Nama Guru</label>
                 <input type="text" name="nama_guru" value="<?= set_value('nama_guru'); ?>" class="form-control">
                 <?= form_error('nama_guru', '<div class="text-danger small">', '</div>'); ?>
@@ -57,12 +63,9 @@
                 </select>
                 <?= form_error('id_mapel', '<div class="text-danger small">', '</div>'); ?>
             </div>
-            <input type="hidden" name="password" value="guru123">
             <button type="submit" class="btn btn-primary mb-5">Simpan</button>
             <?= anchor('administrator/guru', '<div class="btn btn-info mb-5">Kembali</div>') ?>
-
         </div>
     </div>
-
     <?php form_close(); ?>
 </div>

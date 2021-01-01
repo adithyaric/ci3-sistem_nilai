@@ -51,8 +51,8 @@
                                         <div class="form-group">
                                             <select class="form-control form-control-sm" name="rule" required>
                                                 <option value="">Login Sebagai...</option>
-                                                <option value="guru">Guru</option>
                                                 <option value="siswa">Siswa</option>
+                                                <option value="guru">Guru</option>
                                                 <option value="users">Admin/Wali Kelas</option>
                                             </select>
                                         </div>

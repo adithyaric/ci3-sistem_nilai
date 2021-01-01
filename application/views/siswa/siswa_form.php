@@ -14,6 +14,12 @@
                 <?= form_error('username', '<div class="text-danger small">', '</div>'); ?>
             </div>
             <div class="form-group">
+                <label for="">Password</label>
+                <input type="password" name="password" value="<?= set_value('password'); ?>" class="form-control">
+                <?= form_error('password', '<div class="text-danger small">', '</div>'); ?>
+                <!-- <input type="hidden" name="password" value="guru123"> -->
+            </div>
+            <div class="form-group">
                 <label for="">Nama siswa</label>
                 <input type="text" name="nama_siswa" value="<?= set_value('nama_siswa'); ?>" class="form-control">
                 <?= form_error('nama_siswa', '<div class="text-danger small">', '</div>'); ?>
@@ -47,7 +53,6 @@
                 <input type="file" name="photo">
                 <?= form_error('photo', '<div class="text-danger small">', '</div>'); ?>
             </div>
-            <input type="hidden" name="password" value="siswa123">
             <button type="submit" class="btn btn-primary mb-5">Simpan</button>
             <?= anchor('administrator/siswa', '<div class="btn btn-info mb-5">Kembali</div>') ?>
         </div>

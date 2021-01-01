@@ -200,6 +200,9 @@ class Guru extends CI_Controller
     $this->form_validation->set_rules('username', 'username', 'required', [
       'required' => 'Nip wajib diisi!'
     ]);
+    $this->form_validation->set_rules('password', 'password', 'required', [
+      'required' => 'Password wajib diisi!'
+    ]);
     $this->form_validation->set_rules('nama_guru', 'nama_guru', 'required', [
       'required' => 'Nama guru wajib diisi!'
     ]);
