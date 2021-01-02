@@ -94,4 +94,11 @@
     </tr>
   </table>
   <?= anchor('penilaian/raport', '<div class="btn btn-info btn-sm mb-5">Kembali</div>') ?>
+  <form action="<?= base_url('penilaian/raport/pdf') ?>" method="post">
+    <input type="hidden" name="nis" value="<?= $nis; ?>"><br>
+    <input type="hidden" name="semester" value="<?= $semester; ?>">
+    <button type="submit" class="btn btn-primary">
+      <li class="fa fa-print"></li> Print
+    </button>
+  </form>
 </div>

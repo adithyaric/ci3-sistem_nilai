@@ -26,7 +26,9 @@
             </select>
             <?= form_error('semester', '<div class="text-danger small">', '</div>'); ?>
           </div>
-          <button type="submit" class="btn btn-primary">Proses</button>
+          <button type="submit" class="btn btn-primary">
+            <li class="fa fa-graduation-cap"></li> Proses
+          </button>
         </form>
       </div>
     </div>

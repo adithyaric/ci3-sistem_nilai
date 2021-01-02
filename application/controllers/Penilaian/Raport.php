@@ -42,6 +42,8 @@ class Raport extends CI_Controller
                 redirect(base_url() . 'penilaian/raport');
                 exit();
             }
+            $data['nis'] = $nis;
+            $data['semester'] = $semester;
             $data['nilai'] = $this->Raport_model->getDataByID($nis, $semester);
             $data['semester'] = $semester;
             $data['siswa'] = $this->Raport_model->getSiswa($nis);
@@ -50,5 +52,15 @@ class Raport extends CI_Controller
             $this->load->view('raport/data_raport', $data);
             $this->load->view('templates/footer');
         }
+    }
+    public function pdf()
+    {
+        $nis = $this->input->post('nis', TRUE);
+        $semester = $this->input->post('semester', TRUE);
+        $data['nilai'] = $this->Raport_model->getDataByID($nis, $semester);
+        $data['semester'] = $semester;
+        $data['siswa'] = $this->Raport_model->getSiswa($nis);
+        $this->load->view('templates/header');
+        $this->load->view('raport/print', $data);
     }
 }

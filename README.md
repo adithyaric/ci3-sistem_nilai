@@ -6,9 +6,8 @@
 ***
 - [x] Tampilan Dashboard Tiap user
 - [x] Edit password Siswa & Guru
-- [90%] Perbaikan dan Improvement
-- [50%] Cetak Raport -> Print To PDF
-
+- [x] Perbaikan dan Improvement
+- [x] Cetak Raport -> Print To PDF
 - [x] Menambah Semester
 - [x] Menambah KKM -> Mapel
 - [x] Landing Page
