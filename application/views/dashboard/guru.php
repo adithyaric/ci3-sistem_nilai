@@ -12,7 +12,7 @@
                         <td><?= $detail->username; ?></td>
                     </tr>
                     <tr>
-                        <th>NAMA guru</th>
+                        <th>NAMA GURU</th>
                         <td><?= $detail->nama_guru; ?></td>
                     </tr>
                     <tr>

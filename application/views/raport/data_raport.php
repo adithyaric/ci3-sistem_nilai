@@ -1,3 +1,8 @@
+<style>
+  th {
+    text-align: center;
+  }
+</style>
 <div class="container-fluid">
   <center>
     <legend><strong>CAPAIAN HASIL BELAJAR</strong></legend>
@@ -32,7 +37,7 @@
       <th>NO</th>
       <th>MATA Pelajaran</th>
       <th>KKM</th>
-      <th align="center">Nilai</th>
+      <th>Nilai</th>
       <th>Predikat</th>
     </tr>
 
@@ -57,7 +62,7 @@
           <?= $s['nama_mapel'] . "<br>" .
             "<small>" . $s['nama_guru'] . "</small>"; ?>
         </td>
-        <td><?= $s['kkm']; ?></td>
+        <td align="center"><?= $s['kkm']; ?></td>
         <td align="center"><?= $rata_rata; ?></td>
         <td align="center">
           <?php
@@ -93,10 +98,10 @@
       <td></td>
     </tr>
   </table>
-  <?= anchor('penilaian/raport', '<div class="btn btn-info btn-sm mb-5">Kembali</div>') ?>
-  <form action="<?= base_url('penilaian/raport/pdf') ?>" method="post">
+  <form target="_blank" action="<?= base_url('penilaian/raport/pdf') ?>" method="post">
     <input type="hidden" name="nis" value="<?= $nis; ?>"><br>
     <input type="hidden" name="semester" value="<?= $semester; ?>">
+    <?= anchor('penilaian/raport', '<div class="btn btn-info btn-sm">Kembali</div>') ?>
     <button type="submit" class="btn btn-primary">
       <li class="fa fa-print"></li> Print
     </button>

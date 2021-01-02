@@ -27,9 +27,6 @@
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Import</button>
                                 </div>
-                                <!-- <div class="col">
-                                    <?= $this->session->flashdata('pesan'); ?>
-                                </div> -->
                             </div>
                             <?= form_close(); ?>
                         </div>
@@ -63,15 +60,13 @@
                                         <td><?= $n['uas']; ?></td>
                                         <td><?= $n['nama_mapel']; ?></td>
                                         <td><?= $n['nama_guru']; ?></td>
-                                        <td><?php
-
-                                            if ($n['semester'] == '1') {
-                                                echo "Ganjil";
-                                            } else {
-                                                echo "Genap";
-                                            }
-
-                                            ?></td>
+                                        <td>
+                                            <?php if ($n['semester'] == '1') { ?>
+                                                <span class="badge badge-warning">Ganjil</span>
+                                            <?php } else { ?>
+                                                <span class="badge badge-success">Genap</span>
+                                            <?php } ?>
+                                        </td>
                                         <td width="20px"><?= anchor('penilaian/nilai/update/' . $n['id_nilai'], '<div class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></div>') ?></td>
                                         <td width="20px">
                                             <a onclick="deleteConfirm('<?php echo site_url('penilaian/nilai/delete/' . $n['id_nilai']) ?>')" href="#!" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>

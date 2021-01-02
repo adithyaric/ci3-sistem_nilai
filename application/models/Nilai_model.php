@@ -26,6 +26,7 @@ class Nilai_model extends CI_Model
         $this->db->where('n.id_mapel', $id_mapel);
         $this->db->where('n.id_guru', $id_guru);
         $this->db->order_by('n.semester', 'asc');
+        $this->db->order_by('n.nis', 'asc');
         return $this->db->get()->result_array();
     }
     //('akses') == 'wali_kelas'
@@ -38,6 +39,8 @@ class Nilai_model extends CI_Model
         $this->db->join('siswa s', 's.username = n.nis');
         $this->db->where('s.id_kelas', $id_wali);
         $this->db->order_by('n.id_mapel', 'asc');
+        $this->db->order_by('n.semester', 'asc');
+        $this->db->order_by('n.nis', 'asc');
         return $this->db->get()->result_array();
     }
     //('akses') == 'admin'
@@ -48,6 +51,8 @@ class Nilai_model extends CI_Model
         $this->db->join('mapel m', 'm.id_mapel=n.id_mapel');
         $this->db->join('guru g', 'g.id_guru=n.id_guru');
         $this->db->order_by('n.id_mapel', 'asc');
+        $this->db->order_by('n.semester', 'asc');
+        $this->db->order_by('n.nis', 'asc');
         return $this->db->get()->result_array();
     }
     public function getDataByID($where)
