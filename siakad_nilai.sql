@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2021 at 06:44 PM
+-- Generation Time: Jan 02, 2021 at 06:23 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -35,7 +35,7 @@ CREATE TABLE `guru` (
   `alamat` varchar(50) NOT NULL,
   `jenis_kelamin` enum('Laki-Laki','Perempuan') NOT NULL,
   `email` varchar(50) NOT NULL,
-  `telp` int(12) NOT NULL,
+  `telp` varchar(12) NOT NULL,
   `photo` varchar(50) NOT NULL,
   `id_mapel` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -45,9 +45,10 @@ CREATE TABLE `guru` (
 --
 
 INSERT INTO `guru` (`id_guru`, `username`, `password`, `nama_guru`, `alamat`, `jenis_kelamin`, `email`, `telp`, `photo`, `id_mapel`) VALUES
-(1, 12345, 'asd', 'Diah Agil', 'Solo', 'Perempuan', 'Diah@gmail.com', 214565327, 'default-7.jpg', 11),
-(8, 12346, 'guru123', 'Adithya', 'Surakarta', 'Laki-Laki', 'muhammad.0718@students.amikom.ac.id', 0, 'default-61.jpg', 7),
-(15, 12347, 'guru123', 'Siti', 'Surakarta', 'Perempuan', 'zidnie.iz@students.amikom.ac.id', 0, 'default-3.jpg', 10);
+(1, 12345, 'asd', 'Diah Agil', 'Solo', 'Perempuan', 'Diah@gmail.com', '087711945403', 'default-3.jpg', 11),
+(8, 12346, 'asd', 'Adithya', 'Surakarta', 'Laki-Laki', 'muhammad.0718@students.amikom.ac.id', '087711945405', 'default-9.jpg', 7),
+(15, 12347, 'asd', 'Siti', 'Surakarta', 'Perempuan', 'adit123@gmail.com', '087711945404', 'default-5.jpg', 10),
+(32, 12348, 'asd', 'Jono', 'Surakarta', 'Laki-Laki', 'ricky@gmail.com', '087711945403', 'default-81.jpg', 12);
 
 -- --------------------------------------------------------
 
@@ -65,6 +66,7 @@ CREATE TABLE `kelas` (
 --
 
 INSERT INTO `kelas` (`id_kelas`, `nama_kelas`) VALUES
+(1, 'none'),
 (3, 'IPA 1'),
 (5, 'IPA 2'),
 (7, 'IPA 3'),
@@ -88,7 +90,7 @@ CREATE TABLE `mapel` (
 --
 
 INSERT INTO `mapel` (`id_mapel`, `nama_mapel`, `kkm`) VALUES
-(1, 'Bahasa Indonesia', 78),
+(1, 'Bahasa Indonesia', 76),
 (7, 'Bahasa Jawa', 77),
 (10, 'Bahasa Jerman', 75),
 (11, 'Matematika', 68),
@@ -116,21 +118,24 @@ CREATE TABLE `nilai` (
 --
 
 INSERT INTO `nilai` (`id_nilai`, `nis`, `id_guru`, `id_mapel`, `semester`, `tugas`, `uts`, `uas`) VALUES
-(69, 123, 30, 12, 1, 44, 66, 55),
-(70, 124, 30, 12, 1, 55, 88, 66),
-(71, 125, 30, 12, 1, 66, 88, 99),
 (72, 123, 1, 11, 1, 44, 66, 55),
 (73, 124, 1, 11, 1, 55, 88, 66),
 (74, 125, 1, 11, 1, 66, 88, 99),
-(75, 123, 8, 7, 1, 88, 66, 55),
+(75, 123, 8, 7, 1, 88, 88, 76),
 (76, 124, 8, 7, 1, 55, 88, 66),
 (77, 125, 8, 7, 1, 66, 55, 34),
 (78, 123, 1, 11, 2, 44, 66, 55),
-(79, 124, 1, 11, 2, 55, 88, 66),
+(79, 124, 1, 11, 2, 77, 88, 66),
 (80, 125, 1, 11, 2, 66, 88, 99),
 (81, 123, 15, 10, 1, 88, 97, 99),
 (82, 124, 15, 10, 1, 98, 99, 97),
-(83, 125, 15, 10, 1, 99, 88, 98);
+(83, 125, 15, 10, 1, 99, 88, 98),
+(84, 123, 32, 12, 2, 88, 89, 77),
+(85, 124, 32, 12, 2, 77, 78, 79),
+(86, 125, 32, 12, 2, 81, 83, 84),
+(87, 123, 32, 12, 1, 66, 78, 90),
+(88, 124, 32, 12, 1, 76, 67, 98),
+(89, 125, 32, 12, 1, 75, 78, 96);
 
 -- --------------------------------------------------------
 
@@ -154,10 +159,10 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`id_siswa`, `username`, `password`, `nama_siswa`, `jenis_kelamin`, `alamat`, `photo`, `id_kelas`) VALUES
-(7, 123, 'asd', 'Reiner', 'Perempuan', 'Magelang', 'default-94.jpg', 3),
-(8, 124, '0', 'Budhi', 'Laki-Laki', 'Wonosobo', 'default-21.jpg', 3),
-(11, 125, '0', 'Muhammad', 'Laki-Laki', 'Grabag', 'default-4.jpg', 9),
-(13, 127, '0', 'Setiawan', 'Laki-Laki', 'Jogja', 'default-910.jpg', 9);
+(7, 123, 'asd', 'Adithya Ricky', 'Laki-Laki', 'Magelang', 'default-4.jpg', 3),
+(8, 124, 'asd', 'Budhi', 'Laki-Laki', 'Wonosobo', 'default-6.jpg', 3),
+(11, 125, 'asd', 'Muhammad', 'Laki-Laki', 'Grabag', 'default-2.jpg', 9),
+(13, 127, 'asd', 'Setiawan', 'Laki-Laki', 'Jogja', 'default-8.jpg', 9);
 
 -- --------------------------------------------------------
 
@@ -180,8 +185,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `level`, `blokir`, `id_kelas`) VALUES
-(11, 'Roberto', 'sss', 'sss@gmail.com', 'wali_kelas', 'Y', 9),
-(12, 'admin', 'admin', 'admin@gmail.com', 'admin', 'N', 3),
+(11, 'Roberto', 'asd', 'sss@gmail.com', 'wali_kelas', 'Y', 9),
+(12, 'admin', 'admin', 'admin@gmail.com', 'admin', 'N', 1),
 (14, 'Adit', 'asd', 'admin@gmail.com', 'wali_kelas', 'N', 3);
 
 --
@@ -211,7 +216,10 @@ ALTER TABLE `mapel`
 -- Indexes for table `nilai`
 --
 ALTER TABLE `nilai`
-  ADD PRIMARY KEY (`id_nilai`);
+  ADD PRIMARY KEY (`id_nilai`),
+  ADD KEY `id_guru` (`id_guru`),
+  ADD KEY `id_mapel` (`id_mapel`),
+  ADD KEY `nis` (`nis`);
 
 --
 -- Indexes for table `siswa`
@@ -235,13 +243,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `guru`
 --
 ALTER TABLE `guru`
-  MODIFY `id_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `mapel`
@@ -253,7 +261,7 @@ ALTER TABLE `mapel`
 -- AUTO_INCREMENT for table `nilai`
 --
 ALTER TABLE `nilai`
-  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `siswa`
@@ -265,7 +273,7 @@ ALTER TABLE `siswa`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
@@ -276,6 +284,13 @@ ALTER TABLE `users`
 --
 ALTER TABLE `guru`
   ADD CONSTRAINT `guru_ibfk_1` FOREIGN KEY (`id_mapel`) REFERENCES `mapel` (`id_mapel`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `nilai`
+--
+ALTER TABLE `nilai`
+  ADD CONSTRAINT `nilai_ibfk_1` FOREIGN KEY (`id_mapel`) REFERENCES `mapel` (`id_mapel`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `nilai_ibfk_2` FOREIGN KEY (`id_guru`) REFERENCES `guru` (`id_guru`);
 
 --
 -- Constraints for table `siswa`

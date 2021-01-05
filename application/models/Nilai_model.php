@@ -11,6 +11,10 @@ class Nilai_model extends CI_Model
         }
     }
 
+    public function get_mapel($id_mapel)
+    {
+        return $this->db->get_where('guru', ["id_mapel" => $id_mapel])->row();
+    }
     public function get($id_kelas)
     {
         return $this->db->get_where('kelas', ["id_kelas" => $id_kelas])->row();

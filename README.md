@@ -4,6 +4,9 @@
 - Nim   : 18.12.0718
 - Kelas : 18-S1-SI-03
 ***
+- [ ] table siswa:
+tambahin data"
+- [ ] wali kelas taruh ke table guru, dibedakan sesuai level
 - [x] Tampilan Dashboard Tiap user
 - [x] Edit password Siswa & Guru
 - [x] Perbaikan dan Improvement

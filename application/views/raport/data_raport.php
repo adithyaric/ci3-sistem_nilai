@@ -102,8 +102,10 @@
     <input type="hidden" name="nis" value="<?= $nis; ?>"><br>
     <input type="hidden" name="semester" value="<?= $semester; ?>">
     <?= anchor('penilaian/raport', '<div class="btn btn-info btn-sm">Kembali</div>') ?>
-    <button type="submit" class="btn btn-primary">
-      <li class="fa fa-print"></li> Print
-    </button>
+    <?php if ($this->session->userdata('akses') != 'siswa') : ?>
+      <button type="submit" class="btn btn-primary">
+        <li class="fa fa-print"></li> Print
+      </button>
+    <?php endif; ?>
   </form>
 </div>
