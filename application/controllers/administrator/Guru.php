@@ -36,6 +36,7 @@ class Guru extends CI_Controller
   public function tambah_guru()
   {
     $data['mapel'] = $this->guru_model->tampil_data('mapel')->result();
+    $data['kelas'] = $this->guru_model->tampil_data('kelas')->result();
     $this->load->view('templates/header');
     $this->load->view('templates/sidebar');
     $this->load->view('guru/guru_form', $data);
@@ -50,6 +51,8 @@ class Guru extends CI_Controller
     $jenis_kelamin = $this->input->post('jenis_kelamin');
     $email         = $this->input->post('email');
     $telp          = $this->input->post('telp');
+    $level          = $this->input->post('level');
+    $id_kelas    = $this->input->post('id_kelas');
     $id_mapel      = $this->input->post('id_mapel');
     $password      = $this->input->post('password');
     $photo         = $_FILES['photo']['name'];
@@ -95,7 +98,8 @@ class Guru extends CI_Controller
         'telp'          => $telp,
         'photo'         => $photo,
         'id_mapel'      => $id_mapel,
-        // 'level'         => $level
+        'id_kelas'      => $id_kelas,
+        'level'         => $level
       );
 
       $this->guru_model->insert_data($data, 'guru');
@@ -116,6 +120,7 @@ class Guru extends CI_Controller
   {
     $where = array('username' => $id);
     $data['guru']     = $this->guru_model->edit_data($where, 'guru')->result();
+    $data['kelas'] = $this->guru_model->tampil_data('kelas')->result();
     $data['mapel']     = $this->guru_model->tampil_data('mapel')->result();
     $data['detail']    = $this->guru_model->ambil_id_guru($id);
     $this->load->view('templates/header');
@@ -137,6 +142,8 @@ class Guru extends CI_Controller
     $jenis_kelamin = $this->input->post('jenis_kelamin');
     $email         = $this->input->post('email');
     $telp          = $this->input->post('telp');
+    $level          = $this->input->post('level');
+    $id_kelas    = $this->input->post('id_kelas');
     $id_mapel      = $this->input->post('id_mapel');
     $photo         = $_FILES['userfile']['name'];
 
@@ -161,7 +168,9 @@ class Guru extends CI_Controller
       'jenis_kelamin' => $jenis_kelamin,
       'email'         => $email,
       'telp'          => $telp,
-      'id_mapel'      => $id_mapel
+      'id_mapel'      => $id_mapel,
+      'id_kelas'      => $id_kelas,
+      'level'         => $level
     );
 
     $where = array(

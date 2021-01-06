@@ -52,8 +52,8 @@
                                             <select class="form-control form-control-sm" name="rule" required>
                                                 <option value="">Login Sebagai...</option>
                                                 <option value="siswa">Siswa</option>
-                                                <option value="guru">Guru</option>
-                                                <option value="users">Admin/Wali Kelas</option>
+                                                <option value="guru">Guru/Wali Kelas</option>
+                                                <option value="users">Administrator/Operator</option>
                                             </select>
                                         </div>
                                         <button class="btn btn-primary btn-user btn-block">Login</button>

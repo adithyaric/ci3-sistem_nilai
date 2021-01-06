@@ -7,6 +7,7 @@ class Dash_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('guru g');
+        $this->db->join('kelas k', 'k.id_kelas = g.id_kelas');
         $this->db->join('mapel m', 'm.id_mapel=g.id_mapel');
         $this->db->where('g.id_guru', $id);
         return $this->db->get()->row();
@@ -23,7 +24,7 @@ class Dash_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('users u');
-        $this->db->join('kelas k', 'k.id_kelas = u.id_kelas');
+        // $this->db->join('kelas k', 'k.id_kelas = u.id_kelas');
         $this->db->where('u.id', $id);
         return $this->db->get()->row();
     }

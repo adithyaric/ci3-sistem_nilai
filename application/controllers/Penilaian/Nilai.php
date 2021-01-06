@@ -32,6 +32,7 @@ class Nilai extends CI_Controller
             $data['nilai'] = $this->Nilai_model->getData();
         }
 
+        $data['tahun_akademik'] = $this->Nilai_model->tampil_data()->result();
         $data['kelas'] = $this->Nilai_model->get($id_wali);
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
@@ -48,13 +49,13 @@ class Nilai extends CI_Controller
         if ($this->upload->do_upload('importexcel')) {
             $mapel = $this->session->userdata('ses_id_mapel');
             $id_guru = $this->session->userdata('ses_id');
-            $semester = $this->input->post('semester', TRUE);
-            if (empty($semester)) {
+            $tahun_akademik = $this->input->post('tahun_akademik', TRUE);
+            if (empty($tahun_akademik)) {
                 $this->session->set_flashdata(
                     'msg',
                     '<div class="alert alert-warning">
                     <a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a>
-                    <strong>Semester!</strong> wajib di-isi !</div>'
+                    <strong>Tahun Ajaran!</strong> wajib di-isi !</div>'
                 );
                 redirect(base_url() . 'penilaian/nilai');
                 exit();
@@ -73,7 +74,7 @@ class Nilai extends CI_Controller
                             'uas'        => $row->getCellAtIndex(4),
                             'id_mapel' => $mapel,
                             'id_guru' => $id_guru,
-                            'semester' => $semester
+                            'tahun_akademik' => $tahun_akademik
                         );
                         $this->Nilai_model->import_data($databarang);
                     }

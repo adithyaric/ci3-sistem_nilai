@@ -35,7 +35,19 @@
                         <th>MATA PELAJARAN</th>
                         <td><?= $detail->nama_mapel; ?></td>
                     </tr>
-
+                    <tr>
+                        <th>JABATAN</th>
+                        <td><?php
+                            if ($detail->level == 'guru') {
+                                echo "Guru";
+                            } else {
+                                echo "Wali Kelas";
+                            } ?></td>
+                    </tr>
+                    <tr>
+                        <th>KELAS</th>
+                        <td><?= $detail->nama_kelas; ?></td>
+                    </tr>
                 </table>
             </div>
         </div>

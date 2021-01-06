@@ -13,21 +13,19 @@ class Raport extends CI_Controller
     }
     public function index()
     {
+        $data['tahun_akademik'] = $this->Raport_model->tampil_data()->result();
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('raport/raport');
+        $this->load->view('raport/raport', $data);
         $this->load->view('templates/footer');
     }
     public function raport_aksi()
     {
         $nis = $this->input->post('nis', TRUE);
-        $semester = $this->input->post('semester', TRUE);
+        $tahun_akademik = $this->input->post('tahun_akademik', TRUE);
         $cek = $this->db->get_where('siswa', array('username' => $nis));
         $this->form_validation->set_rules('nis', 'nis', 'required', [
             'required' => 'NIS wajib diisi'
-        ]);
-        $this->form_validation->set_rules('semester', 'semester', 'required', [
-            'required' => 'semester wajib diisi'
         ]);
         if ($this->form_validation->run() == FALSE) {
             $this->index();
@@ -43,9 +41,8 @@ class Raport extends CI_Controller
                 exit();
             }
             $data['nis'] = $nis;
-            $data['semester'] = $semester;
-            $data['nilai'] = $this->Raport_model->getDataByID($nis, $semester);
-            $data['semester'] = $semester;
+            $data['tahun_akademik'] = $this->Raport_model->tampil_dataTahun($tahun_akademik);
+            $data['nilai'] = $this->Raport_model->getDataByID($nis, $tahun_akademik);
             $data['siswa'] = $this->Raport_model->getSiswa($nis);
             $this->load->view('templates/header');
             $this->load->view('templates/sidebar');
@@ -56,9 +53,9 @@ class Raport extends CI_Controller
     public function pdf()
     {
         $nis = $this->input->post('nis', TRUE);
-        $semester = $this->input->post('semester', TRUE);
-        $data['nilai'] = $this->Raport_model->getDataByID($nis, $semester);
-        $data['semester'] = $semester;
+        $tahun_akademik = $this->input->post('tahun_akademik', TRUE);
+        $data['nilai'] = $this->Raport_model->getDataByID($nis, $tahun_akademik);
+        $data['tahun_akademik'] = $this->Raport_model->tampil_dataTahun($tahun_akademik);
         $data['siswa'] = $this->Raport_model->getSiswa($nis);
         $this->load->view('templates/header');
         $this->load->view('raport/print', $data);

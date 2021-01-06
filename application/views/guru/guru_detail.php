@@ -12,7 +12,7 @@
                 <td><?= $dt->username; ?></td>
             </tr>
             <tr>
-                <th>NAMA guru</th>
+                <th>NAMA GURU</th>
                 <td><?= $dt->nama_guru; ?></td>
             </tr>
             <tr>
@@ -30,6 +30,14 @@
             <tr>
                 <th>NO TELEPON</th>
                 <td><?= $dt->telp; ?></td>
+            </tr>
+            <tr>
+                <th>LEVEL</th>
+                <td><?php if ($dt->level == 'guru') {
+                        echo "Guru";
+                    } else {
+                        echo "Wali Kelas";
+                    } ?> : <?= $dt->nama_kelas; ?></td>
             </tr>
             <tr>
                 <th>MATA PELAJARAN</th>

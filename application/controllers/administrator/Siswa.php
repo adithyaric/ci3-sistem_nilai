@@ -18,7 +18,7 @@ class Siswa extends CI_Controller
 
   public function index()
   {
-    $data['siswa'] = $this->siswa_model->tampil_data('siswa')->result();
+    $data['siswa'] = $this->siswa_model->tampil_data_siswa()->result();
     $this->load->view('templates/header');
     $this->load->view('templates/sidebar');
     $this->load->view('siswa/siswa', $data);
@@ -47,6 +47,10 @@ class Siswa extends CI_Controller
     $username      = $this->input->post('username', true);
     $password      = $this->input->post('password');
     $nama_siswa    = $this->input->post('nama_siswa');
+    $tanggal_lahir = $this->input->post('tanggal_lahir');
+    $tempat_lahir  = $this->input->post('tempat_lahir');
+    $agama         = $this->input->post('agama');
+    $ortu          = $this->input->post('ortu');
     $alamat        = $this->input->post('alamat');
     $jenis_kelamin = $this->input->post('jenis_kelamin');
     $id_kelas    = $this->input->post('id_kelas');
@@ -86,6 +90,10 @@ class Siswa extends CI_Controller
       $data = array(
         'username'      => $username,
         'nama_siswa'    => $nama_siswa,
+        'tempat_lahir'  => $tempat_lahir,
+        'tanggal_lahir' => $tanggal_lahir,
+        'agama'         => $agama,
+        'ortu'          => $ortu,
         'alamat'        => $alamat,
         'jenis_kelamin' => $jenis_kelamin,
         'id_kelas'      => $id_kelas,
@@ -127,6 +135,10 @@ class Siswa extends CI_Controller
     $username      = $this->input->post('username');
     $password      = $this->input->post('password');
     $nama_siswa    = $this->input->post('nama_siswa');
+    $tanggal_lahir = $this->input->post('tanggal_lahir');
+    $tempat_lahir  = $this->input->post('tempat_lahir');
+    $agama         = $this->input->post('agama');
+    $ortu          = $this->input->post('ortu');
     $alamat        = $this->input->post('alamat');
     $jenis_kelamin = $this->input->post('jenis_kelamin');
     $id_kelas      = $this->input->post('id_kelas');
@@ -149,6 +161,10 @@ class Siswa extends CI_Controller
       'username'       => $username,
       'password'      => $password,
       'nama_siswa'    => $nama_siswa,
+      'tempat_lahir'  => $tempat_lahir,
+      'tanggal_lahir' => $tanggal_lahir,
+      'agama'         => $agama,
+      'ortu'          => $ortu,
       'alamat'        => $alamat,
       'jenis_kelamin' => $jenis_kelamin,
       'id_kelas'    => $id_kelas
@@ -200,6 +216,18 @@ class Siswa extends CI_Controller
     ]);
     $this->form_validation->set_rules('alamat', 'alamat', 'required', [
       'required' => 'Alamat wajib diisi!'
+    ]);
+    $this->form_validation->set_rules('ortu', 'ortu', 'required', [
+      'required' => 'Orang tua/Wali wajib diisi!'
+    ]);
+    $this->form_validation->set_rules('agama', 'agama', 'required', [
+      'required' => 'Agama wajib diisi!'
+    ]);
+    $this->form_validation->set_rules('tempat_lahir', 'tempat_lahir', 'required', [
+      'required' => 'Tempat lahir wajib diisi!'
+    ]);
+    $this->form_validation->set_rules('tanggal_lahir', 'tanggal_lahir', 'required', [
+      'required' => 'Tanggal lahir wajib diisi!'
     ]);
     $this->form_validation->set_rules('jenis_kelamin', 'jenis_kelamin', 'required', [
       'required' => 'Jenis kelamin wajib diisi!'

@@ -12,12 +12,28 @@
                 <td><?= $dt->username; ?></td>
             </tr>
             <tr>
-                <th>NAMA siswa</th>
+                <th>NAMA SISWA</th>
                 <td><?= $dt->nama_siswa; ?></td>
+            </tr>
+            <tr>
+                <th>Tempat Lahir</th>
+                <td><?= $dt->tempat_lahir; ?></td>
+            </tr>
+            <tr>
+                <th>Tanggal Lahir</th>
+                <td><?= $dt->tanggal_lahir; ?></td>
+            </tr>
+            <tr>
+                <th>Orang Tua/Wali</th>
+                <td><?= $dt->ortu; ?></td>
             </tr>
             <tr>
                 <th>ALAMAT</th>
                 <td><?= $dt->alamat; ?></td>
+            </tr>
+            <tr>
+                <th>Agama</th>
+                <td><?= $dt->agama; ?></td>
             </tr>
             <tr>
                 <th>JENIS KELAMIN</th>

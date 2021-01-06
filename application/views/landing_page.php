@@ -18,7 +18,7 @@
     </form>
 </nav>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -32,7 +32,7 @@
             <a class="nav-link ml-3" href="#">KONTAK</a>
         </div>
     </div>
-</nav>
+</nav> -->
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -63,16 +63,15 @@
 
 <div class="card text-center m-3">
     <div class="card-header">
-        <strong>TENTANG SEKOLAH</strong>
+        <!-- <strong>TENTANG SEKOLAH</strong> -->
     </div>
     <div class="card-body">
-        <p class="card-text">
+        <!-- <p class="card-text">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia voluptatum assumenda impedit? Error quo, impedit quod voluptatum quia deserunt iure accusamus natus iusto cumque quos mollitia enim suscipit ea id.
         </p>
-        <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Selengkapnya...
-        </button>
+        </button> -->
     </div>
 </div>
 

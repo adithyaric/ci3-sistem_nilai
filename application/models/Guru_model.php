@@ -6,11 +6,20 @@ class Guru_model extends CI_Model
     {
         return $this->db->get($table);
     }
-
+    public function tampil_data_guru()
+    {
+        $this->db->select('*');
+        $this->db->from('guru g');
+        $this->db->join('kelas k', 'k.id_kelas = g.id_kelas');
+        $this->db->order_by('g.id_kelas');
+        $query = $this->db->get();
+        return $query;
+    }
     public function ambil_id_guru($id)
     {
         $this->db->select('*, m.nama_mapel as nama_mapel');
         $this->db->from('guru g');
+        $this->db->join('kelas k', 'k.id_kelas=g.id_kelas');
         $this->db->join('mapel m', 'm.id_mapel=g.id_mapel');
         $this->db->where('g.username', $id);
         $hasil = $this->db->get();

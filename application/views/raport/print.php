@@ -30,14 +30,10 @@
                             <td>NIS</td>
                             <td>:</td>
                             <td><?= $siswa->username; ?></td>
-                            <td>Semester </td>
+                            <td>Tahun Ajaran </td>
                             <td>:</td>
                             <td>
-                                <?php if ($semester == '1') {
-                                    echo "Ganjil";
-                                } else {
-                                    echo "Genap";
-                                } ?>
+                                <?= $tahun_akademik->tahun_akademik . " " . $tahun_akademik->semester; ?>
                             </td>
                         </tr>
                     </table>

@@ -26,10 +26,10 @@ class Users extends CI_Controller
 
     public function tambah_users()
     {
-        $data['kelas'] = $this->user_model->tampil_data('kelas')->result();
+        // $data['kelas'] = $this->user_model->tampil_data('kelas')->result();
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('users/users_form', $data);
+        $this->load->view('users/users_form');
         $this->load->view('templates/footer');
     }
 
@@ -56,9 +56,9 @@ class Users extends CI_Controller
                 'username'   => $this->input->post('username'),
                 'password'   => $this->input->post('password'),
                 'email'      => $this->input->post('email'),
-                'level'      => $this->input->post('level'),
+                // 'level'      => $this->input->post('level'),
                 'blokir'     => $this->input->post('blokir'),
-                'id_kelas'   => $this->input->post('id_kelas')
+                // 'id_kelas'   => $this->input->post('id_kelas')
             );
 
             $this->user_model->insert_data($data, 'users');
@@ -79,7 +79,7 @@ class Users extends CI_Controller
     {
         $where = array('id' => $id);
         $data['users'] = $this->user_model->edit_data($where, 'users')->result();
-        $data['kelas']     = $this->user_model->tampil_data('kelas')->result();
+        // $data['kelas']     = $this->user_model->tampil_data('kelas')->result();
         $data['detail']    = $this->user_model->ambil_id_users($id);
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
@@ -94,17 +94,17 @@ class Users extends CI_Controller
         $username   = $this->input->post('username');
         $password   = $this->input->post('password');
         $email      = $this->input->post('email');
-        $level      = $this->input->post('level');
+        // $level      = $this->input->post('level');
         $blokir     = $this->input->post('blokir');
-        $id_kelas     = $this->input->post('id_kelas');
+        // $id_kelas     = $this->input->post('id_kelas');
 
         $data = array(
             'username' => $username,
             'password' => $password,
             'email'    => $email,
-            'level'    => $level,
+            // 'level'    => $level,
             'blokir'   => $blokir,
-            'id_kelas'    => $id_kelas
+            // 'id_kelas'    => $id_kelas
         );
 
         $where = array('id' => $id);
@@ -149,14 +149,14 @@ class Users extends CI_Controller
         $this->form_validation->set_rules('email', 'email', 'required', [
             'required' => 'Email wajib diisi!'
         ]);
-        $this->form_validation->set_rules('level', 'level', 'required', [
-            'required' => 'Level wajib diisi!'
-        ]);
+        // $this->form_validation->set_rules('level', 'level', 'required', [
+        //     'required' => 'Level wajib diisi!'
+        // ]);
         $this->form_validation->set_rules('blokir', 'blokir', 'required', [
             'required' => 'Blokir wajib diisi!'
         ]);
-        $this->form_validation->set_rules('id_kelas', 'id_kelas', 'required', [
-            'required' => 'Nama Kelas wajib diisi!'
-        ]);
+        // $this->form_validation->set_rules('id_kelas', 'id_kelas', 'required', [
+        //     'required' => 'Nama Kelas wajib diisi!'
+        // ]);
     }
 }

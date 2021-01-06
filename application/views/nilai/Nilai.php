@@ -9,7 +9,7 @@
             <div class="col-12">
                 <?= @$this->session->flashdata('msg') ?>
                 <?= $this->session->flashdata('pesan'); ?>
-                <?php if (!empty($this->session->userdata('ses_id_mapel'))) : ?>
+                <?php if ($this->session->userdata('akses') != 'admin') : ?>
                     <div class="card">
                         <div class="card-body">
                             <?= form_open_multipart('penilaian/nilai/uploaddata'); ?>
@@ -18,10 +18,14 @@
                                     <input type="file" class="form-control-file" id="importexcel" name="importexcel" accept=".xlsx, .xls">
                                 </div>
                                 <div class="col-4" style="border: black;">
-                                    <select name="semester" id="" class="form-control">
-                                        <option value="">--Pilih Semester--</option>
-                                        <option value="1">Ganjil</option>
-                                        <option value="2">Genap</option>
+                                    <select name="tahun_akademik" id="" class="form-control">
+                                        <?php foreach ($tahun_akademik as $t) :
+                                            if ($t->status == 'aktif') :
+                                        ?>
+                                                <option value="<?= $t->id; ?>"><?= $t->tahun_akademik . " " . $t->semester; ?></option>
+                                        <?php
+                                            endif;
+                                        endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -44,7 +48,7 @@
                                     <th scope="col">UAS</th>
                                     <th scope="col">MAPEL</th>
                                     <th scope="col">GURU</th>
-                                    <th scope="col">Semester</th>
+                                    <th scope="col">TAHUN AJARAN</th>
                                     <th colspan="2">AKSI</th>
                                 </tr>
                             </thead>
@@ -61,7 +65,9 @@
                                         <td><?= $n['nama_mapel']; ?></td>
                                         <td><?= $n['nama_guru']; ?></td>
                                         <td>
-                                            <?php if ($n['semester'] == '1') { ?>
+                                            <?php echo $n['tahun_akademik'];
+
+                                            if ($n['semester'] == "ganjil") { ?>
                                                 <span class="badge badge-warning">Ganjil</span>
                                             <?php } else { ?>
                                                 <span class="badge badge-success">Genap</span>

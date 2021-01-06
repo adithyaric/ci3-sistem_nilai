@@ -9,7 +9,7 @@
             <th>NO</th>
             <th>NIS</th>
             <th>NAMA SISWA</th>
-            <th>ALAMAT</th>
+            <th>KELAS</th>
             <th colspan="3">AKSI</th>
         </tr>
         <?php
@@ -19,7 +19,7 @@
                 <td width="20px;"><?= $no++; ?></td>
                 <td><?= $gr->username; ?></td>
                 <td><?= $gr->nama_siswa; ?></td>
-                <td><?= $gr->alamat; ?></td>
+                <td><?= $gr->nama_kelas; ?></td>
                 <td width="20px"><?= anchor('administrator/siswa/detail/' . $gr->username, '<div class="btn btn-sm btn-info"><i class="fa fa-eye"></i></div>') ?></td>
                 <td width="20px"><?= anchor('administrator/siswa/update/' . $gr->username, '<div class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></div>') ?></td>
                 <td width="20px">

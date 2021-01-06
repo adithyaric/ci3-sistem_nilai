@@ -23,31 +23,12 @@
           <?= form_error('email', '<div class="text-danger small">', '</div>'); ?>
         </div>
         <div class="form-group">
-          <label for="">Level</label>
-          <select name="level" id="" class="form-control">
-            <option value="admin" selected>Admin</option>
-            <option value="wali_kelas">Wali Kelas</option>
-          </select>
-          <?= form_error('level', '<div class="text-danger small">', '</div>'); ?>
-        </div>
-
-        <div class="form-group">
           <label for="">Blokir</label>
           <select name="blokir" id="" class="form-control">
             <option value="Y" selected>Ya</option>
             <option value="N">Tidak</option>
           </select>
           <?= form_error('blokir', '<div class="text-danger small">', '</div>'); ?>
-        </div>
-        <div class="form-group">
-          <label for="">Kelas</label>
-          <select name="id_kelas" id="" class="form-control">
-            <option value="">--Pilih kelas--</option>
-            <?php foreach ($kelas as $gr) : ?>
-              <option value="<?= $gr->id_kelas; ?>"><?= $gr->nama_kelas; ?></option>
-            <?php endforeach; ?>
-          </select>
-          <?= form_error('id_kelas', '<div class="text-danger small">', '</div>'); ?>
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
         <?= anchor('administrator/users', '<div class="btn btn-info">Kembali</div>') ?>

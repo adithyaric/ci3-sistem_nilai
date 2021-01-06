@@ -3,6 +3,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Nilai_model extends CI_Model
 {
+    public function tampil_data()
+    {
+        return $this->db->get('tahun_akademik');
+    }
     public function import_data($databarang)
     {
         $jumlah = count($databarang);
@@ -27,9 +31,10 @@ class Nilai_model extends CI_Model
         $this->db->from('nilai n');
         $this->db->join('mapel m', 'm.id_mapel=n.id_mapel');
         $this->db->join('guru g', 'g.id_guru=n.id_guru');
+        $this->db->join('tahun_akademik t', 't.id=n.tahun_akademik');
         $this->db->where('n.id_mapel', $id_mapel);
         $this->db->where('n.id_guru', $id_guru);
-        $this->db->order_by('n.semester', 'asc');
+        $this->db->order_by('n.tahun_akademik', 'asc');
         $this->db->order_by('n.nis', 'asc');
         return $this->db->get()->result_array();
     }
@@ -41,9 +46,10 @@ class Nilai_model extends CI_Model
         $this->db->join('mapel m', 'm.id_mapel=n.id_mapel');
         $this->db->join('guru g', 'g.id_guru=n.id_guru');
         $this->db->join('siswa s', 's.username = n.nis');
+        $this->db->join('tahun_akademik t', 't.id=n.tahun_akademik');
         $this->db->where('s.id_kelas', $id_wali);
         $this->db->order_by('n.id_mapel', 'asc');
-        $this->db->order_by('n.semester', 'asc');
+        $this->db->order_by('n.tahun_akademik', 'asc');
         $this->db->order_by('n.nis', 'asc');
         return $this->db->get()->result_array();
     }
@@ -54,8 +60,9 @@ class Nilai_model extends CI_Model
         $this->db->from('nilai n');
         $this->db->join('mapel m', 'm.id_mapel=n.id_mapel');
         $this->db->join('guru g', 'g.id_guru=n.id_guru');
+        $this->db->join('tahun_akademik t', 't.id=n.tahun_akademik');
         $this->db->order_by('n.id_mapel', 'asc');
-        $this->db->order_by('n.semester', 'asc');
+        $this->db->order_by('n.tahun_akademik', 'asc');
         $this->db->order_by('n.nis', 'asc');
         return $this->db->get()->result_array();
     }

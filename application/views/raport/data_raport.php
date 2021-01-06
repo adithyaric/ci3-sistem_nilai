@@ -19,14 +19,10 @@
         <td>NIS</td>
         <td>:</td>
         <td><?= $siswa->username; ?></td>
-        <td>Semester </td>
+        <td>Tahun Ajaran </td>
         <td>:</td>
         <td>
-          <?php if ($semester == '1') {
-            echo "Ganjil";
-          } else {
-            echo "Genap";
-          } ?>
+          <?= $tahun_akademik->tahun_akademik . " " . $tahun_akademik->semester; ?>
         </td>
       </tr>
     </table>
@@ -100,7 +96,7 @@
   </table>
   <form target="_blank" action="<?= base_url('penilaian/raport/pdf') ?>" method="post">
     <input type="hidden" name="nis" value="<?= $nis; ?>"><br>
-    <input type="hidden" name="semester" value="<?= $semester; ?>">
+    <input type="hidden" name="tahun_akademik" value="<?= $tahun_akademik->id; ?>">
     <?= anchor('penilaian/raport', '<div class="btn btn-info btn-sm">Kembali</div>') ?>
     <?php if ($this->session->userdata('akses') != 'siswa') : ?>
       <button type="submit" class="btn btn-primary">

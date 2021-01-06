@@ -12,7 +12,6 @@
       <th>NO</th>
       <th>USERNAME</th>
       <th>EMAIL</th>
-      <th>LEVEL</th>
       <th>BLOKIR</th>
       <th colspan="2">AKSI</th>
     </tr>
@@ -25,7 +24,6 @@
         <td><?= $no++; ?></td>
         <td><?= $user->username; ?></td>
         <td><?= $user->email; ?></td>
-        <td><?= $user->level; ?></td>
         <td><?= $user->blokir; ?></td>
         <td width="20px"><?= anchor('administrator/users/update/' . $user->id, '<div class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></div>') ?></td>
         <td width="20px">

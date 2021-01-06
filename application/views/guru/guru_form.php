@@ -54,14 +54,33 @@
                 <?= form_error('photo', '<div class="text-danger small">', '</div>'); ?>
             </div>
             <div class="form-group">
-                <label for="">Mata Kuliah</label>
+                <label for="">Mata Pelajaran</label>
                 <select name="id_mapel" id="" class="form-control">
-                    <option value="">--Pilih Mata Kuliah--</option>
+                    <option value="">--Pilih Mata Pelajaran--</option>
                     <?php foreach ($mapel as $mp) : ?>
                         <option value="<?= $mp->id_mapel; ?>"><?= $mp->nama_mapel; ?></option>
                     <?php endforeach; ?>
                 </select>
                 <?= form_error('id_mapel', '<div class="text-danger small">', '</div>'); ?>
+            </div>
+            <div class="form-group">
+                <label for="">Level</label>
+                <select name="level" id="" class="form-control">
+                    <option value="">--Pilih Level--</option>
+                    <option value="guru">Guru</option>
+                    <option value="wali_kelas">Wali Kelas</option>
+                </select>
+                <?= form_error('level', '<div class="text-danger small">', '</div>'); ?>
+            </div>
+            <div class="form-group">
+                <label for="">Kelas</label>
+                <select name="id_kelas" id="" class="form-control">
+                    <option value="">--Pilih kelas--</option>
+                    <?php foreach ($kelas as $k) : ?>
+                        <option value="<?= $k->id_kelas; ?>"><?= $k->nama_kelas; ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <?= form_error('id_kelas', '<div class="text-danger small">', '</div>'); ?>
             </div>
             <button type="submit" class="btn btn-primary mb-5">Simpan</button>
             <?= anchor('administrator/guru', '<div class="btn btn-info mb-5">Kembali</div>') ?>

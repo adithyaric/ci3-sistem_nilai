@@ -7,7 +7,15 @@ class Siswa_model extends CI_Model
     {
         return $this->db->get($table);
     }
-
+    public function tampil_data_siswa()
+    {
+        $this->db->select('*');
+        $this->db->from('siswa s');
+        $this->db->join('kelas k', 'k.id_kelas = s.id_kelas');
+        $this->db->order_by('s.id_kelas');
+        $query = $this->db->get();
+        return $query;
+    }
     public function ambil_id_siswa($id)
     {
         $this->db->select('*, k.nama_kelas as nama_kelas');

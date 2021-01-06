@@ -4,9 +4,9 @@ class User_model extends CI_Model
 {
     public function ambil_id_users($id)
     {
-        $this->db->select('*, k.nama_kelas as nama_kelas');
+        $this->db->select('*');
         $this->db->from('users s');
-        $this->db->join('kelas k', 'k.id_kelas = s.id_kelas');
+        // $this->db->join('kelas k', 'k.id_kelas = s.id_kelas');
         $this->db->where('id', $id);
         $hasil = $this->db->get();
         if ($hasil->num_rows() > 0) {

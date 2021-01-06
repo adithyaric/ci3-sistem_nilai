@@ -12,12 +12,28 @@
                         <td><?= $detail->username; ?></td>
                     </tr>
                     <tr>
-                        <th>NAMA siswa</th>
+                        <th>NAMA SISWA</th>
                         <td><?= $detail->nama_siswa; ?></td>
+                    </tr>
+                    <tr>
+                        <th>Tempat Lahir</th>
+                        <td><?= $detail->tempat_lahir; ?></td>
+                    </tr>
+                    <tr>
+                        <th>Tanggal Lahir</th>
+                        <td><?= $detail->tanggal_lahir; ?></td>
+                    </tr>
+                    <tr>
+                        <th>NAMA Orang tua/Wali</th>
+                        <td><?= $detail->ortu; ?></td>
                     </tr>
                     <tr>
                         <th>ALAMAT</th>
                         <td><?= $detail->alamat; ?></td>
+                    </tr>
+                    <tr>
+                        <th>Agama</th>
+                        <td><?= $detail->agama; ?></td>
                     </tr>
                     <tr>
                         <th>JENIS KELAMIN</th>
@@ -27,7 +43,6 @@
                         <th>Kelas</th>
                         <td><?= $detail->nama_kelas; ?></td>
                     </tr>
-
                 </table>
             </div>
         </div>

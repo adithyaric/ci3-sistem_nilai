@@ -25,9 +25,36 @@
                 <?= form_error('nama_siswa', '<div class="text-danger small">', '</div>'); ?>
             </div>
             <div class="form-group">
+                <label for="">Tempat Lahir</label>
+                <input type="text" name="tempat_lahir" value="<?= set_value('tempat_lahir'); ?>" class="form-control">
+                <?= form_error('tempat_lahir', '<div class="text-danger small">', '</div>'); ?>
+            </div>
+            <div class="form-group">
+                <label for="">Tanggal Lahir</label>
+                <input type="date" name="tanggal_lahir" class="form-control">
+                <?= form_error('tanggal_lahir', '<div class="text-danger small">', '</div>'); ?>
+            </div>
+            <div class="form-group">
                 <label for="">Alamat</label>
                 <input type="text" name="alamat" value="<?= set_value('alamat'); ?>" class="form-control">
                 <?= form_error('alamat', '<div class="text-danger small">', '</div>'); ?>
+            </div>
+            <div class="form-group">
+                <label for="">Orang tua/ Wali</label>
+                <input type="text" name="ortu" value="<?= set_value('ortu'); ?>" class="form-control">
+                <?= form_error('ortu', '<div class="text-danger small">', '</div>'); ?>
+            </div>
+            <div class="form-group">
+                <label for="">Agama</label>
+                <select name="agama" id="" class="form-control">
+                    <option value="">--Pilih Agama--</option>
+                    <option>Islam</option>
+                    <option>Kristen</option>
+                    <option>Hindu</option>
+                    <option>Buddha</option>
+                    <option>Konghuchu</option>
+                </select>
+                <?= form_error('jenis_kelamin', '<div class="text-danger small">', '</div>'); ?>
             </div>
             <div class="form-group">
                 <label for="">Jenis Kelamin</label>

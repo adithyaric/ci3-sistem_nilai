@@ -14,24 +14,6 @@
                         <th>EMAIL</th>
                         <td><?= $detail->email; ?></td>
                     </tr>
-                    <tr>
-                        <th>Level</th>
-                        <td><?php
-                            if ($detail->level == 'wali_kelas') {
-                                echo "Wali Kelas";
-                            } else {
-                                echo "Admin";
-                            } ?></td>
-                    </tr>
-                    <?php
-                    if ($this->session->userdata('akses') == 'wali_kelas') {
-                    ?>
-                        <tr>
-                            <th>Kelas</th>
-                            <td><?= $detail->nama_kelas; ?></td>
-                        </tr>
-                    <?php } ?>
-
                 </table>
             </div>
         </div>

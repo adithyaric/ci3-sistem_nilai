@@ -25,19 +25,6 @@
             <?= form_error('email', '<div class="text-danger small">', '</div>'); ?>
           </div>
           <div class="form-group">
-            <label for="">Level</label>
-            <select name="level" id="" class="form-control">
-              <?php if ($user->level == 'admin') { ?>
-                <option value="admin" selected>Admin</option>
-                <option value="wali_kelas">Wali Kelas</option>
-              <?php } elseif ($user->level == 'wali_kelas') { ?>
-                <option value="admin">Admin</option>
-                <option value="wali_kelas" selected>Wali Kelas</option>
-              <?php } ?>
-            </select>
-            <?= form_error('level', '<div class="text-danger small">', '</div>'); ?>
-          </div>
-          <div class="form-group">
             <label for="">Blokir</label>
             <select name="blokir" id="" class="form-control">
               <?php if ($user->blokir == 'Y') { ?>
@@ -49,17 +36,6 @@
               <?php } ?>
             </select>
             <?= form_error('blokir', '<div class="text-danger small">', '</div>'); ?>
-          </div>
-          <div class="form-group">
-            <label for="">Kelas</label>
-            <select name="id_kelas" id="" class="form-control">
-              <?php foreach ($detail as $dt) : ?>
-                <option value="<?= $dt->id_kelas; ?>">--<?= $dt->nama_kelas ?>--</option>
-              <?php endforeach; ?>
-              <?php foreach ($kelas as $kls) : ?>
-                <option value="<?= $kls->id_kelas; ?>"><?= $kls->nama_kelas; ?></option>
-              <?php endforeach; ?>
-            </select>
           </div>
           <button type="submit" class="btn btn-primary">Simpan</button>
           <?= anchor('administrator/users', '<div class="btn btn-info">Kembali</div>') ?>

@@ -62,7 +62,7 @@
                     <?= form_error('photo', '<div class="text-danger small">', '</div>'); ?>
                 </div>
                 <div class="form-group">
-                    <label for="">Mata Kuliah</label>
+                    <label for="">Mata Pelajaran</label>
                     <select name="id_mapel" id="" class="form-control">
                         <option value="<?= $dt->id_mapel; ?>">--<?= $dt->nama_mapel ?>--</option>
                         <?php foreach ($mapel as $mp) : ?>
@@ -70,6 +70,28 @@
                         <?php endforeach; ?>
                     </select>
                     <?= form_error('id_mapel', '<div class="text-danger small">', '</div>'); ?>
+                </div>
+                <div class="form-group">
+                    <label for="">Level</label>
+                    <select name="level" id="" class="form-control">
+                        <?php if ($gr->level == 'guru') { ?>
+                            <option value="guru" selected>Guru</option>
+                            <option value="wali_kelas">Wali Kelas</option>
+                        <?php } elseif ($gr->level == 'wali_kelas') { ?>
+                            <option value="guru">Guru</option>
+                            <option value="wali_kelas" selected>Wali Kelas</option>
+                        <?php } ?>
+                    </select>
+                    <?= form_error('level', '<div class="text-danger small">', '</div>'); ?>
+                </div>
+                <div class="form-group">
+                    <label for="">Kelas</label>
+                    <select name="id_kelas" id="" class="form-control">
+                        <option value="<?= $dt->id_kelas; ?>">--<?= $dt->nama_kelas ?>--</option>
+                        <?php foreach ($kelas as $kls) : ?>
+                            <option value="<?= $kls->id_kelas; ?>"><?= $kls->nama_kelas; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary mb-5">Simpan</button>
                 <?= anchor('administrator/guru', '<div class="btn btn-info mb-5">Kembali</div>') ?>
