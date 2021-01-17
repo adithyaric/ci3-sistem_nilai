@@ -82,6 +82,9 @@
                 </select>
                 <?= form_error('id_kelas', '<div class="text-danger small">', '</div>'); ?>
             </div>
+            <div class="col-sm-4 alert alert-danger" role="alert">
+                <small>Jika Level Guru pilih kelas : none </small>
+            </div>
             <button type="submit" class="btn btn-primary mb-5">Simpan</button>
             <?= anchor('administrator/guru', '<div class="btn btn-info mb-5">Kembali</div>') ?>
         </div>
