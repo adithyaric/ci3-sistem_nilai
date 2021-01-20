@@ -7,6 +7,7 @@ class Raport_model extends CI_Model
     {
         return $this->db->get('tahun_akademik');
     }
+
     public function tampil_dataTahun($tahun_akademik)
     {
         return $this->db->get_where('tahun_akademik', ["id" => $tahun_akademik])->row();

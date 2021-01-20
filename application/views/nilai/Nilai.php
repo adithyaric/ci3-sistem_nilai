@@ -74,8 +74,10 @@
                                             <?php } ?>
                                         </td>
                                         <td width="20px"><?= anchor('penilaian/nilai/update/' . $n['id_nilai'], '<div class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></div>') ?></td>
+
                                         <td width="20px">
-                                            <a onclick="deleteConfirm('<?php echo site_url('penilaian/nilai/delete/' . $n['id_nilai']) ?>')" href="#!" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                            <a onclick="deleteConfirm('<?php echo site_url('penilaian/nilai/delete/' . $n['id_nilai']) ?>')" href="#!" class="btn btn-sm btn-danger">
+                                                <i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

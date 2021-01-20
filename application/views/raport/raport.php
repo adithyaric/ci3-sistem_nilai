@@ -19,11 +19,6 @@
             <?= form_error('nis', '<div class="text-danger small">', '</div>'); ?>
             <br>
             <label for="">Tahun Ajaran</label>
-            <!-- <select name="semester" id="" class="form-control">
-              <option value="">--Pilih Semester--</option>
-              <option value="1">Ganjil</option>
-              <option value="2">Genap</option>
-            </select> -->
             <select name="tahun_akademik" id="" class="form-control">
               <?php foreach ($tahun_akademik as $t) :
                 if ($t->status == 'aktif') :

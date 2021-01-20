@@ -134,6 +134,7 @@ class Nilai extends CI_Controller
         );
         redirect('penilaian/nilai');
     }
+
     public function delete($id)
     {
         $where = array('id_nilai' => $id);
